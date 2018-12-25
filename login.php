@@ -2,11 +2,10 @@
 <?php
 session_start();
 error_reporting(0);
-include('db.php');
-if(isset($_SESSION["username"]))  
- {  
-      header("location:home.php");  
- }  
+include 'db.php';
+if (isset($_SESSION["username"])) {
+    header("location:home.php");
+}
 ?>
 <!DOCTYPE html>
 <!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
@@ -30,6 +29,9 @@ if(isset($_SESSION["username"]))
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <style>
+	input[type="email"] {
+    text-transform: lowercase;
+}
 </style>
  </head>
   <body>
@@ -40,13 +42,13 @@ if(isset($_SESSION["username"]))
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
@@ -63,7 +65,7 @@ if(isset($_SESSION["username"]))
 <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" id="myform" action="check.php" autocomplete="off">
+				<form class="login100-form validate-form" id="myform" action="check.php" >
 					<span class="login100-form-title p-b-26">
 						Welcome
 					</span>
@@ -72,7 +74,7 @@ if(isset($_SESSION["username"]))
 					</span>
 
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" style="text-align:left;margin:0;padding:0"  required name="username">
+						<input class="input100" type="email" style="text-align:left;margin:0;padding:0"  id="uname" required name="username">
 						<span class="focus-input100" data-placeholder="Email ID"></span>
 					</div>
 
@@ -80,7 +82,7 @@ if(isset($_SESSION["username"]))
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100" type="password" style="text-align:left;margin:0;padding:0" required name="password">
+						<input class="input100" type="password" style="text-align:left;margin:0;padding:0" id="pass" required name="password">
 						<span class="focus-input100"  data-placeholder="Password"></span>
 					</div>
          <div style="text-align:center"> <p id="incorrect" ></p></div>
@@ -94,12 +96,12 @@ if(isset($_SESSION["username"]))
 					</div>
 
 				</form>
-				
+
 				<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 						<center>	<a href="register.php"><button  id="register" class="login100-form-btn">
-								Register 
+								Register
 							</button></a></center>
 						</div>
 					</div>
@@ -139,7 +141,16 @@ else if (data==="done")
 }
              }
       });
-  });
+	});
+	$("input#uname").on({
+  keydown: function(e) {
+    if (e.which === 32)
+      return false;
+  },
+  change: function() {
+    this.value = this.value.replace(/\s/g, "");
+  }
+});
   </script>
 </body>
 

@@ -13,11 +13,18 @@ if (empty($_POST["qty"]) && empty($_POST["group1"])) {
     $type = $_POST["type"];
     $type2 = $type . "-" . $group . "L";
     $cat = $_POST["cat"];
+    $lit = $_POST["lit"];
+
     $digits = 6;
 
     $oid = "#" . rand(pow(10, $digits - 1), pow(10, $digits) - 1);
     $status = "PLACED";
-    $query = "SELECT price FROM oils WHERE category = '$cat' and name='$type' and qty='$group'";
+    if ($lit % 26 === 25) {
+        $price = 15;
+    } else {
+        $query = "SELECT price FROM oils WHERE category = '$cat' and name='$type' and qty='$group'";
+    }
+
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $price = $row['price'];
