@@ -12,7 +12,7 @@ include('db.php');
            $password = sha1($password);  
 
 
-           $query = "INSERT INTO users values ('$uid','$name','$email','$address','$contact',0,0)";
+           $query = "INSERT INTO users values ('$uid','$name','$email','$address','$contact',0,0,'A')";
            $result = mysqli_query($conn, $query);  
            if($result)  
            {  
