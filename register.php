@@ -1,7 +1,7 @@
-
 <?php
 session_start();
 error_reporting(0);
+
 include('db.php');
 if(isset($_SESSION["username"]))  
  {  
@@ -9,31 +9,19 @@ if(isset($_SESSION["username"]))
  }  
 ?>
 <!DOCTYPE html>
-<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
-<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
-<!--[if IE 8]><html class="preIE9"><![endif]-->
-<!--[if gte IE 9]><!--><html><!--<![endif]-->
-  <head>
-    <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Glide - The E-Commerce Portal</title>
-  <meta name="author" content="name">
-  <meta name="description" content="description here">
-  <meta name="keywords" content="keywords,here">
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
-  <link rel="stylesheet" href="css/materialize.min.css" type="text/css">
-  <script src="scripts/materialize.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<style>
-</style>
- </head>
-  <body>
-  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
@@ -52,10 +40,12 @@ if(isset($_SESSION["username"]))
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <style>
-#incorrect{
-  display:none;
-  visibility:hidden;
-  text-align:center;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
 </style>
 </head>
@@ -63,24 +53,39 @@ if(isset($_SESSION["username"]))
 <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" id="myform" action="check.php" autocomplete="off">
+				<form class="login100-form validate-form" id="myform" action="registercheck.php" autocomplete="off">
 					<span class="login100-form-title p-b-26">
-						Welcome
+					Registration Portal
 					</span>
 					<span class="login100-form-title p-b-48">
 					<p style="font-size:20px;font-weight:'thinner'">FitLite Oil Booking System</p>
+
 					</span>
 
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" style="text-align:left;margin:0;padding:0"  required name="username">
+						<input class="input100" type="text" style="text-align:left;margin:0;padding:0"  required name="name">
+						<span class="focus-input100" data-placeholder="Full Name"></span>
+					</div>
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="email" style="text-align:left;margin:0;padding:0"  required name="email">
 						<span class="focus-input100" data-placeholder="Email ID"></span>
 					</div>
-
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" style="text-align:left;margin:0;padding:0"  required name="address">
+						<span class="focus-input100" data-placeholder="Address"></span>
+					</div>
+			
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" style="text-align:left;margin:0;padding:0"  required name="contact">
+						<span class="focus-input100" data-placeholder="Contact Number"></span>
+					</div>
+	
+				
 					<div class="wrap-input100 validate-input" >
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100" type="password" style="text-align:left;margin:0;padding:0" required name="password">
+						<input class="input100" type="text" style="text-align:left;margin:0;padding:0" required name="password">
 						<span class="focus-input100"  data-placeholder="Password"></span>
 					</div>
          <div style="text-align:center"> <p id="incorrect" ></p></div>
@@ -88,21 +93,14 @@ if(isset($_SESSION["username"]))
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button type="submit" name="submit" id="submit" class="login100-form-btn">
-								Login
+								Submit
 							</button>
 						</div>
 					</div>
 
 				</form>
 				
-				<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-						<center>	<a href="register.php"><button  id="register" class="login100-form-btn">
-								Register 
-							</button></a></center>
-						</div>
-					</div>
+			
 			</div>
 		</div>
 	</div>
@@ -124,19 +122,14 @@ if(isset($_SESSION["username"]))
              success: function(data)
              {
                if(data==="wrong")
-{  document.getElementById("incorrect").style.color="red";
-  document.getElementById("incorrect").innerHTML="Incorrect username or password!";
-  document.getElementById("incorrect").style.display="inline";
-  document.getElementById("incorrect").style.visibility="visible";
-  console.log(data);}
+{ alert("Some error occurred!");
+}
 else if (data==="done")
 {
-  document.getElementById("incorrect").style.display="inline";
-  document.getElementById("incorrect").style.visibility="visible";
-  document.getElementById("incorrect").style.color="green";
-  document.getElementById("incorrect").innerHTML="Success!";
-  window.setTimeout(function(){ window.location = "home.php"; },100);
+  alert("Success!");
+  window.setTimeout(function(){ window.location = "home.php"; },0);
 }
+
              }
       });
   });

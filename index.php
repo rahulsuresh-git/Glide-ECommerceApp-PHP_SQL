@@ -26,7 +26,7 @@ if(isset($_SESSION["username"]))
   crossorigin="anonymous"></script>
   <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
   <link rel="stylesheet" href="css/materialize.min.css" type="text/css">
-  <script src="scripts/materialize.min.js"></script>
+  <script src="js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <style>
