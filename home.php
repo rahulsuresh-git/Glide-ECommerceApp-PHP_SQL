@@ -27,16 +27,16 @@ if (isset($_SESSION['username'])) {
     $se1 = 0;
     $se5 = 0;
     $co05 = 0;
-    $co5 = 0;
+    $co1 = 0;
     $ca05=0;
 
-    if($litres%26===25){
+    if($litres%26===25 && $lit!=0){
       $gr5 =
       $gr1=
       $se1 = 
       $se5 = 
       $co05 = 
-      $co5 = 
+      $co1 = 
       $ca05= 15;
   
     }
@@ -142,7 +142,7 @@ if (isset($_SESSION['username'])) {
             ><i class="material-icons">menu</i></a
           >
 
-          <a href="#" class="brand-logo center">FitLite</a>
+          <a class="brand-logo center" style="font-size:20px">FitLite Menu</a>
         </div>
       </nav>
       <ul id="slide-out" class="sidenav">
@@ -168,20 +168,20 @@ if (isset($_SESSION['username'])) {
           </div>
         </li>
         <li>
-          <a href="#!"><i class="material-icons">restaurant_menu </i>Menu</a>
-        </li>
-        <li><div class="divider"></div></li>
-        <li>
-          <a href="#!"><i class="material-icons">shopping_cart</i>Cart</a>
-        </li>
-        <li>
-          <a href="#!"><i class="material-icons">done</i>Orders</a>
-        </li>
-
-        <li>
-          <a href="#!"><i class="material-icons">edit</i>Edit Profile</a>
-        </li>
-
+            <a href="home.php"><i class="material-icons">restaurant_menu </i>Menu</a>
+          </li>
+          <li><div class="divider"></div></li>
+          <li>
+            <a href="placed.php"><i class="material-icons">shopping_cart</i>Placed Orders</a>
+          </li>
+          <li>
+            <a href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
+          </li>
+  
+          <li>
+            <a href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
+          </li>
+  
         <li>
           <a class="red waves-effect white-text" href="logout.php"
             ><i style="color:white" class="material-icons"
@@ -496,15 +496,23 @@ if (isset($_SESSION['username'])) {
       var cat = "<?php echo $cat; ?>";
 
       var url = form.attr("action");
+      var lit = "<?php echo $litres; ?>";
+
       var type = "Groundnut Oil";
       $.ajax({
         type: "POST",
         url: url,
         data:
-          form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat, // serializes the form's elements.
+        form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+ "&lit="+lit, // serializes the form's elements.
         success: function(data) {
-          console.log(data);
+          if(data.includes("done"))
+         { M.toast({html: 'Order successfuly placed!',classes:'green'});
+         $('#modal1').modal('close');
         }
+        else
+        {
+            M.toast({html: 'Some error occurred!',classes:'red'});
+        }        }
       });
     });
     $("#myform2").submit(function(e) {
@@ -512,6 +520,7 @@ if (isset($_SESSION['username'])) {
       var form = $(this);
       var uid = "<?php echo $id; ?>";
       var cat = "<?php echo $cat; ?>";
+      var lit = "<?php echo $litres; ?>";
 
       var url = form.attr("action");
       var type = "Sesame Oil";
@@ -519,10 +528,16 @@ if (isset($_SESSION['username'])) {
         type: "POST",
         url: url,
         data:
-          form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat, // serializes the form's elements.
+        form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+ "&lit="+lit, // serializes the form's elements.
         success: function(data) {
-          console.log(data);
+          if(data.includes("done"))
+         { M.toast({html: 'Order successfuly placed!',classes:'green'});
+         $('#modal2').modal('close');
         }
+        else
+        {
+            M.toast({html: 'Some error occurred!',classes:'red'});
+        }        }
       });
     });
     $("#myform3").submit(function(e) {
@@ -531,16 +546,23 @@ if (isset($_SESSION['username'])) {
       var uid = "<?php echo $id; ?>";
       var cat = "<?php echo $cat; ?>";
       var lit = "<?php echo $litres; ?>";
-
+console.log(lit);
       var url = form.attr("action");
       var type = "Coconut Oil";
       $.ajax({
         type: "POST",
         url: url,
         data:
-          form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+"&litres="+lit, // serializes the form's elements.
+          form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+ "&lit="+lit, // serializes the form's elements.
         success: function(data) {
-          console.log(data);
+          if(data.includes("done"))
+         { M.toast({html: 'Order successfuly placed!',classes:'green'});
+         $('#modal3').modal('close');
+        }
+        else
+        {
+            M.toast({html: 'Some error occurred!',classes:'red'});
+        }
         }
       });
     });
@@ -549,6 +571,7 @@ if (isset($_SESSION['username'])) {
       var form = $(this);
       var uid = "<?php echo $id; ?>";
       var cat = "<?php echo $cat; ?>";
+      var lit = "<?php echo $litres; ?>";
 
       var url = form.attr("action");
       var type = "Castor Oil";
@@ -556,10 +579,17 @@ if (isset($_SESSION['username'])) {
         type: "POST",
         url: url,
         data:
-          form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat, // serializes the form's elements.
+        form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+ "&lit="+lit, // serializes the form's elements.
         success: function(data) {
-          console.log(data);
+          if(data.includes("done"))
+         { M.toast({html: 'Order successfuly placed!',classes:'green'});
+         $('#modal4').modal('close');
         }
+        else
+        {
+            M.toast({html: 'Some error occurred!',classes:'red'});
+        }
+      }
       });
     });
   </script>

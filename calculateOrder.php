@@ -14,32 +14,28 @@ if (empty($_POST["qty"]) && empty($_POST["group1"])) {
     $type2 = $type . "-" . $group . "L";
     $cat = $_POST["cat"];
     $lit = $_POST["lit"];
-
     $digits = 6;
-
+    $price = 0;
     $oid = "#" . rand(pow(10, $digits - 1), pow(10, $digits) - 1);
     $status = "PLACED";
-    if ($lit % 26 === 25) {
+    if ($lit % 26 === 25 && $lit != 0) {
         $price = 15;
     } else {
         $query = "SELECT price FROM oils WHERE category = '$cat' and name='$type' and qty='$group'";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $price = $row['price'];
     }
 
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($result);
-    $price = $row['price'];
     $qtyint = (int) filter_var($qty, FILTER_SANITIZE_NUMBER_INT);
     $groupint = (int) filter_var($group, FILTER_SANITIZE_NUMBER_INT);
     $priceint = (int) filter_var($price, FILTER_SANITIZE_NUMBER_INT);
-
-    echo $groupint;
 
     $total = $qtyint * $priceint;
 
     $query = "INSERT INTO orders values ('$uid','$type2','$qty','$total','$status','$oid')";
     $result = mysqli_query($conn, $query);
     if ($result) {
-
         echo 'done';
     }
     //    $query = "SELECT * FROM auth WHERE email = '$username' AND password = '$password'";
