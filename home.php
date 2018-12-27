@@ -581,14 +581,15 @@ document.getElementById("edit").style.display = 'none';
         {
             M.toast({html: 'Some error occurred!',classes:'red'});
         }
-        $(':input[type=submit]').removeAttr("disabled");
+        setTimeout(" $(':input[type=submit]').removeAttr('disabled')", 3000);
 
 
         }
       });
     });
     $("#myform2").submit(function(e) {
-      e.preventDefault();
+      e.preventDefault();      $(this).find(':input[type=submit]').prop('disabled', true);
+
       var form = $(this);
       var uid = "<?php echo $id; ?>";
       var cat = "<?php echo $cat; ?>";
@@ -611,11 +612,14 @@ document.getElementById("edit").style.display = 'none';
         else
         {
             M.toast({html: 'Some error occurred!',classes:'red'});
-        }        }
+        }                   setTimeout(" $(':input[type=submit]').removeAttr('disabled')", 3000);
+
+    }
       });
     });
     $("#myform3").submit(function(e) {
-      e.preventDefault();
+      e.preventDefault(); $(this).find(':input[type=submit]').prop('disabled', true);
+
       var form = $(this);
       var uid = "<?php echo $id; ?>";
       var cat = "<?php echo $cat; ?>";
@@ -638,12 +642,13 @@ console.log(lit);
         else
         {
             M.toast({html: 'Some error occurred!',classes:'red'});
-        }
+        }        setTimeout(" $(':input[type=submit]').removeAttr('disabled')", 3000);
+
         }
       });
     });
     $("#myform4").submit(function(e) {
-      e.preventDefault();
+      e.preventDefault();  $(this).find(':input[type=submit]').prop('disabled', true);
       var form = $(this);
       var uid = "<?php echo $id; ?>";
       var cat = "<?php echo $cat; ?>";
@@ -666,7 +671,8 @@ console.log(lit);
         else
         {
             M.toast({html: 'Some error occurred!',classes:'red'});
-        }
+        }        setTimeout(" $(':input[type=submit]').removeAttr('disabled')", 3000);
+
       }
       });
     });
