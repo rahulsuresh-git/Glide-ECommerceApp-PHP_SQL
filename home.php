@@ -41,7 +41,7 @@ if (isset($_SESSION['username'])) {
         $ca05 = 15;
 
     } else {
-        $login = 0;
+
         $query = "SELECT price FROM oils WHERE category = '$cat' and name='Groundnut Oil' and qty=1 ";
         $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_array($result);
@@ -87,6 +87,17 @@ if (isset($_SESSION['username'])) {
     $co1 = 0;
     $ca05 = 0;
     $cat = 'A';
+    $uid = "GUEST";
+    $query = "SELECT * FROM users WHERE email = '$uid'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $name = $row['name'];
+    $id = $row['id'];
+    $cat = $row['category'];
+    $balance = $row['balance'];
+    $litres = $row['litres'];
+    $login = 0;
+
     $query = "SELECT price FROM oils WHERE category = '$cat' and name='Groundnut Oil' and qty=1 ";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
@@ -212,22 +223,22 @@ if (isset($_SESSION['username'])) {
             <a href="home.php"><i class="material-icons">restaurant_menu </i>Menu</a>
           </li>
           <li><div class="divider"></div></li>
-          <li>
-            <a href="placed.php"><i class="material-icons">shopping_cart</i>Placed Orders</a>
+          <li id="placed">
+            <a   href="placed.php"><i class="material-icons">shopping_cart</i>Placed Orders</a>
           </li>
-          <li>
-            <a href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
+          <li id="completed">
+            <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
           </li>
 
-          <li>
-            <a href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
+          <li id="edit">
+            <a  href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
           </li>
 
         <li>
-          <a class="red waves-effect white-text" href="logout.php"
+          <a class="red waves-effect white-text" id="logLink" href="logout.php"
             ><i style="color:white" class="material-icons"
               >power_settings_new </i
-            >Logout</a
+            ><p style="display:inline" id="logText">Logout</p></a
           >
         </li>
       </ul>
@@ -513,7 +524,17 @@ if (isset($_SESSION['username'])) {
     $(document).ready(function() {
       $(".modal").modal();
     });
+    var login = "<?php echo $login; ?>";
+    if(login==0)
+    {    var link = document.getElementById("logText");
+link.innerHTML="Register";
+var link = document.getElementById("logLink");
+link.setAttribute('href', "register.php");
+document.getElementById("placed").style.display = 'none';
+document.getElementById("completed").style.display = 'none';
+document.getElementById("edit").style.display = 'none';
 
+    }
     // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
     // var collapsibleElem = document.querySelector('.collapsible');
     // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
@@ -552,7 +573,10 @@ if (isset($_SESSION['username'])) {
           if(data.includes("done"))
          { M.toast({html: 'Order successfuly placed!',classes:'green'});
          $('#modal1').modal('close');
-        }
+        } else if(data.includes("guest")){
+          M.toast({html: 'You are not logged in!',classes:'red'});
+      }
+
         else
         {
             M.toast({html: 'Some error occurred!',classes:'red'});
@@ -581,7 +605,9 @@ if (isset($_SESSION['username'])) {
           if(data.includes("done"))
          { M.toast({html: 'Order successfuly placed!',classes:'green'});
          $('#modal2').modal('close');
-        }
+        }else if(data.includes("guest")){
+          M.toast({html: 'You are not logged in!',classes:'red'});
+      }
         else
         {
             M.toast({html: 'Some error occurred!',classes:'red'});
@@ -606,7 +632,9 @@ console.log(lit);
           if(data.includes("done"))
          { M.toast({html: 'Order successfuly placed!',classes:'green'});
          $('#modal3').modal('close');
-        }
+        }else if(data.includes("guest")){
+          M.toast({html: 'You are not logged in!',classes:'red'});
+      }
         else
         {
             M.toast({html: 'Some error occurred!',classes:'red'});
@@ -632,7 +660,9 @@ console.log(lit);
           if(data.includes("done"))
          { M.toast({html: 'Order successfuly placed!',classes:'green'});
          $('#modal4').modal('close');
-        }
+        }else if(data.includes("guest")){
+          M.toast({html: 'You are not logged in!',classes:'red'});
+      }
         else
         {
             M.toast({html: 'Some error occurred!',classes:'red'});
@@ -640,8 +670,6 @@ console.log(lit);
       }
       });
     });
-    var login =var uid = "<?php echo $login; ?>";
-    console.log(login);
 
   </script>
 </html>

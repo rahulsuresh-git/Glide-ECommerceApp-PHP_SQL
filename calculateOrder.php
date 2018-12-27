@@ -3,8 +3,8 @@ session_start();
 error_reporting(0);
 include 'db.php';
 
-if (empty($_POST["qty"]) && empty($_POST["group1"])) {
-    echo 'wrong';
+if (empty($_POST["qty"]) || empty($_POST["group1"]) || $_POST["uid"] == 0) {
+    echo 'guest';
 } else {
     date_default_timezone_set('Asia/Calcutta');
     $qty = $_POST["qty"];
