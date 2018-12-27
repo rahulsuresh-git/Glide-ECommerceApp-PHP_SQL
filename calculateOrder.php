@@ -6,7 +6,7 @@ include 'db.php';
 if (empty($_POST["qty"]) && empty($_POST["group1"])) {
     echo 'wrong';
 } else {
-
+    date_default_timezone_set('Asia/Calcutta');
     $qty = $_POST["qty"];
     $group = $_POST["group1"];
     $uid = $_POST["uid"];
@@ -14,6 +14,8 @@ if (empty($_POST["qty"]) && empty($_POST["group1"])) {
     $type2 = $type . "-" . $group . "L";
     $cat = $_POST["cat"];
     $lit = $_POST["lit"];
+    $timesp = date("d-m-Y H:i:s");
+
     $digits = 6;
     $price = 0;
     $oid = "#" . rand(pow(10, $digits - 1), pow(10, $digits) - 1);
@@ -33,7 +35,7 @@ if (empty($_POST["qty"]) && empty($_POST["group1"])) {
 
     $total = $qtyint * $priceint;
 
-    $query = "INSERT INTO orders values ('$uid','$type2','$qty','$total','$status','$oid')";
+    $query = "INSERT INTO orders values ('$uid','$type2','$qty','$total','$status','$oid','$timesp')";
     $result = mysqli_query($conn, $query);
     if ($result) {
         echo 'done';

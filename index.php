@@ -2,11 +2,10 @@
 <?php
 session_start();
 error_reporting(0);
-include('db.php');
-if(isset($_SESSION["username"]))  
- {  
-      header("location:home.php");  
- }  
+include 'db.php';
+if (isset($_SESSION["username"])) {
+    header("location:home.php");
+}
 ?>
 <!DOCTYPE html>
 <!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
@@ -37,7 +36,7 @@ body{
   position: absolute;
   width: 100vw;
   height: 60px;
-  top: 50%;
+  top: 35%;
   margin-top: -30px;
   text-align: center;
 }
@@ -51,6 +50,9 @@ margin:10px;
   <body>
     <div class="row" id="parent">
         <div id="child">
+        <div class="col s12">
+        <img src="images/logo.png"  style="width:300px" alt="">
+</div>
      <div class="col s12">
             <a class="red waves-effect waves-light btn-large" href="home.php">Guest</a>
     </div>
