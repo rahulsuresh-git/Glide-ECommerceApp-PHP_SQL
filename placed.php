@@ -136,7 +136,52 @@ if (isset($_SESSION['username'])) {
         </li>
       </ul>
     </div>
+    <div class="container">
+<?php
+$query = "SELECT * FROM orders WHERE uid = '$id' and status='PLACED' order by timesp desc";
+$result = mysqli_query($conn, $query);
+while ($row = mysqli_fetch_assoc($result)) {
+    echo '<div class="row" style="margin-bottom:0">
+    <form method="post" action="deleteOrder.php" id="orderForm">
+    <input type="hidden" name="cancel"   value=' . $row["oid"] . ' id="hiddenfield" />
 
+    <div class="col s12 m5">
+      <div class="card-panel green" >
+        <span class="white-text">ORDER ID : ' . $row["oid"] . '
+        </span>
+        <br>
+        <span class="white-text"> CONTENT : ' . $row["type"] . '
+        </span> <br>
+        <span class="white-text"> QTY : ' . $row["qty"] . '
+        </span> <br>
+        <span class="white-text"> TOTAL : ₹' . $row["total"] . '
+        </span> <br>
+        <span class="white-text"> TIME OF BOOKING : ' . $row["timesp"] . '
+        </span><br>
+        <span class="white-text">STATUS : ' . $row["status"] . '
+        </span>
+        <button
+            type="submit"
+            name="submit"
+            class="waves-effect waves-green red btn btn-success" >
+            Cancel Order
+          </button>
+      </div>
+
+  </form>
+    </div>
+  </div>
+  ';
+
+    $row['oid'] . "<br>";
+}
+
+?>
+
+
+
+
+</div>
     <script>
     $(document).ready(function() {
       $(".modal").modal();
@@ -146,7 +191,30 @@ if (isset($_SESSION['username'])) {
     $(document).ready(function() {
       $(".sidenav").sidenav();
     });
+//     $("#orderForm").submit(function(e) {
+//       e.preventDefault();
+//       $(this).find(':input[type=submit]').prop('disabled', true);
+//       var form = $(this);
+//       var url = form.attr("action");
+//       $.ajax({
+//         type: "POST",
+//         url: url,
+//         data:
+//         form.serialize(), // serializes the form's elements.
+//         success: function(data) {
+// console.log(data);
+//           if(data.includes("done"))
+//          {
+//            location.reload();
+//         }
+//         else
+//         {
+//             M.toast({html: 'Some error occurred!',classes:'red'});
+//         }
 
+//         }
+//       });
+//     });
   </script></body>
 
 
