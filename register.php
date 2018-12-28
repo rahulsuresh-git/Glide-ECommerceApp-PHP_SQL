@@ -2,11 +2,10 @@
 session_start();
 error_reporting(0);
 
-include('db.php');
-if(isset($_SESSION["username"]))  
- {  
-      header("location:home.php");  
- }  
+include 'db.php';
+if (isset($_SESSION["username"])) {
+    header("location:home.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +17,7 @@ if(isset($_SESSION["username"]))
     <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -28,24 +27,24 @@ if(isset($_SESSION["username"]))
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <style>
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    margin: 0; 
+    margin: 0;
 }
 </style>
 </head>
@@ -74,13 +73,13 @@ input[type=number]::-webkit-outer-spin-button {
 						<input class="input100" type="text" style="text-align:left;margin:0;padding:0"  required name="address">
 						<span class="focus-input100" data-placeholder="Address"></span>
 					</div>
-			
+
 					<div class="wrap-input100 validate-input" >
 						<input class="input100" type="text" style="text-align:left;margin:0;padding:0"  required name="contact">
 						<span class="focus-input100" data-placeholder="Contact Number"></span>
 					</div>
-	
-				
+
+
 					<div class="wrap-input100 validate-input" >
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
@@ -99,8 +98,8 @@ input[type=number]::-webkit-outer-spin-button {
 					</div>
 
 				</form>
-				
-			
+
+
 			</div>
 		</div>
 	</div>
@@ -120,14 +119,14 @@ input[type=number]::-webkit-outer-spin-button {
              url: url,
              data: $("#myform").serialize(), // serializes the form's elements.
              success: function(data)
-             {
+             {console.log(data);
                if(data==="wrong")
 { alert("Some error occurred!");
 }
 else if (data==="done")
 {
   alert("Success!");
-  window.setTimeout(function(){ window.location = "home.php"; },0);
+  window.setTimeout(function(){ window.location = "login.php"; },0);
 }
 
              }
