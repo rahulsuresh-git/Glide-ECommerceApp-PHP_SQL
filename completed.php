@@ -105,7 +105,7 @@ if (isset($_SESSION['username'])) {
             /></a>
            <a > <span class="white-text name"><?php echo $name ?></span></a>
             <span class="white-text email" style="margin-bottom:20px;padding:0">
-              <?php echo "FIT" . $id ?></span></a>
+              <?php echo "FITL" . $id ?></span></a>
             <span class="white-text name" style="margin:0;padding:0" >
               <?php echo "Balance : ₹" . $balance ?></span></a>
                 <span class="white-text name" style="margin:0;padding:0"

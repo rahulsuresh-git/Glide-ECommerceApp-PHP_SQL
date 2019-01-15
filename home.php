@@ -179,7 +179,7 @@ if (isset($_SESSION['username'])) {
         margin: 10px;
       }
       .card-content {
-        height: 120px;
+        height: 150px;
       }
       span {
         color: #000;
@@ -212,7 +212,7 @@ if (isset($_SESSION['username'])) {
             /></a>
            <a > <span class="white-text name"><?php echo $name ?></span></a>
             <span class="white-text email" style="margin-bottom:20px;padding:0">
-              <?php echo "FIT" . $id ?></span></a>
+              <?php echo "FITL" . $id ?></span></a>
             <span class="white-text name" style="margin:0;padding:0" >
               <?php echo "Balance : ₹" . $balance ?></span></a>
                 <span class="white-text name" style="margin:0;padding:0"
@@ -357,11 +357,8 @@ if (isset($_SESSION['username'])) {
               </p>
             </div>
             <div class="input-field col s12">
-              <select required name="qty">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
+            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+
               <label>Quantity</label>
             </div>
           </div>
@@ -406,11 +403,8 @@ if (isset($_SESSION['username'])) {
               </p>
             </div>
             <div class="input-field col s12">
-              <select required name="qty">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
+            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+
               <label>Quantity</label>
             </div>
           </div>
@@ -455,11 +449,8 @@ if (isset($_SESSION['username'])) {
               </p>
             </div>
             <div class="input-field col s12">
-              <select required name="qty">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
+            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+
               <label>Quantity</label>
             </div>
           </div>
