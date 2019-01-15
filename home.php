@@ -498,11 +498,8 @@ if (isset($_SESSION['username'])) {
               </p>
             </div>
             <div class="input-field col s12">
-              <select required name="qty">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
+             <input required placeholder="Enter Quantity" name="qty" type="number"  />
+
               <label>Quantity</label>
             </div>
           </div>
