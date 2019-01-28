@@ -224,7 +224,11 @@ if (isset($_SESSION['username'])) {
           </li>
           <li><div class="divider"></div></li>
           <li id="placed">
-            <a   href="placed.php"><i class="material-icons">shopping_cart</i>Placed Orders</a>
+            <a   href="cart.php"><i class="material-icons">shopping_cart
+</i>Cart</a>
+          </li>
+          <li id="placed">
+            <a   href="placed.php"><i class="material-icons">shop</i>Placed Orders</a>
           </li>
           <li id="completed">
             <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
@@ -515,9 +519,9 @@ if (isset($_SESSION['username'])) {
     var login = "<?php echo $login; ?>";
     if(login==0)
     {    var link = document.getElementById("logText");
-link.innerHTML="Register";
+link.innerHTML="Login/Register";
 var link = document.getElementById("logLink");
-link.setAttribute('href', "register.php");
+link.setAttribute('href', "index.php");
 document.getElementById("placed").style.display = 'none';
 document.getElementById("completed").style.display = 'none';
 document.getElementById("edit").style.display = 'none';

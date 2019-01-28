@@ -3,10 +3,10 @@ session_start();
 error_reporting(0);
 include 'db.php';
 
-$oid = $_POST["cancel"];
-$query = "DELETE from orders where oid='$oid'";
+$cid = $_POST["cancel"];
+$query = "DELETE from cart where cid='$cid'";
 $result = mysqli_query($conn, $query);
-header("Location: placed.php"); /* Redirect browser */
+header("Location: cart.php"); /* Redirect browser */
 
 //    $query = "SELECT * FROM auth WHERE email = '$username' AND password = '$password'";
 //    $result = mysqli_query($conn, $query);

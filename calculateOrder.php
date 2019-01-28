@@ -18,7 +18,7 @@ if (empty($_POST["qty"]) || empty($_POST["group1"]) || $_POST["uid"] == 0) {
 
     $digits = 6;
     $price = 0;
-    $oid = "#" . rand(pow(10, $digits - 1), pow(10, $digits) - 1);
+    $cid = "@" . rand(pow(10, $digits - 1), pow(10, $digits) - 1);
     $status = "PLACED";
     if ($lit % 26 === 25 && $lit != 0) {
         $price = 15;
@@ -35,7 +35,7 @@ if (empty($_POST["qty"]) || empty($_POST["group1"]) || $_POST["uid"] == 0) {
 
     $total = $qtyint * $priceint;
 
-    $query = "INSERT INTO orders values ('$uid','$type2','$qty','$total','$status','$oid','$timesp')";
+    $query = "INSERT INTO cart values ('$uid','$type2','$qty','$total','$cid')";
     $result = mysqli_query($conn, $query);
     if ($result) {
         echo 'done';
