@@ -42,7 +42,7 @@ body{
 }
 .btn-large { border-radius: 40px !important;
 width:200px;
-margin:10px;
+margin:5px;
 }
 
 </style>
@@ -57,7 +57,10 @@ margin:10px;
             <a class="red waves-effect waves-light btn-large" href="home.php">Guest</a>
     </div>
     <div class="col s12">
-        <a class="blue waves-effect waves-light btn-large" href="login.php">Login</a>
+        <a class="indigo waves-effect waves-light btn-large" href="login.php">Login</a>
+    </div>
+    <div class="col s12">
+        <a class="indigo waves-effect waves-light btn-large" href="register.php">Register</a>
     </div>
 </div>
       </div>

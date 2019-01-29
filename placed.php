@@ -138,11 +138,13 @@ if (isset($_SESSION['username'])) {
     </div>
     <div class="container">
 <?php
-$query = "SELECT * FROM orders WHERE uid = '$id' and status='PLACED' order by timesp desc";
-$result = mysqli_query($conn, $query);
+$query1 = "select *
+from orders where status='placed'
+group by oid order by timesp desc";
+$result = mysqli_query($conn, $query1);
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="row" style="margin-bottom:0">
-    <form method="post" action="deleteOrder.php" id="orderForm">
+    <form method="post" action="deleteOrder2.php" id="orderForm">
     <input type="hidden" name="cancel"   value=' . $row["oid"] . ' id="hiddenfield" />
 
     <div class="col s12 m5">
@@ -150,11 +152,9 @@ while ($row = mysqli_fetch_assoc($result)) {
         <span class="white-text">ORDER ID : ' . $row["oid"] . '
         </span>
         <br>
-        <span class="white-text"> CONTENT : ' . $row["type"] . '
-        </span> <br>
-        <span class="white-text"> QTY : ' . $row["qty"] . '
-        </span> <br>
-        <span class="white-text"> TOTAL : ₹' . $row["total"] . '
+
+
+        <span class="white-text"> TOTAL : ₹' . $row["grand"] . '
         </span> <br>
         <span class="white-text"> TIME OF BOOKING : ' . $row["timesp"] . '
         </span><br>

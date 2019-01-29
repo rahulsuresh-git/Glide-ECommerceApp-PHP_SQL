@@ -22,7 +22,10 @@ if (isset($_SESSION['username'])) {
     $cat = $row['category'];
     $balance = $row['balance'];
     $litres = $row['litres'];
-
+    $query = "SELECT * FROM auth WHERE email = '$uid'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $origid = $row['id'];
 } else {
     header('Location: index.php');
     die();
@@ -149,7 +152,7 @@ if ($row['sumf'] == "") {
 echo '    <h5>Cart Total : ₹' . $row["sumf"] . '</h5>';
 echo '<div class="row" style="margin-bottom:0">
 <form method="post" action="placeOrder.php" id="place">
-<input type="hidden" name="cancel"   value=' . $uid . ' id="hiddenfield" />
+<input type="hidden" name="origid"   value=' . $origid . ' id="hiddenfield" />
 <button
             type="submit"
             name="submit"
