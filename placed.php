@@ -127,9 +127,6 @@ if (isset($_SESSION['username'])) {
             <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
           </li>
 
-          <li id="edit">
-            <a  href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
-          </li>
 
         <li>
           <a class="red waves-effect white-text" href="logout.php"
