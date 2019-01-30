@@ -115,20 +115,24 @@ if (isset($_SESSION['username'])) {
             ><?php echo "Total Litres : " . $litres . "L" ?></span></a>
           </div>
         </li>
-        <li>
-          <a href="home.php"><i class="material-icons">restaurant_menu </i>Menu</a>
-        </li>
-        <li><div class="divider"></div></li>
-        <li>
-          <a href="placed.php"><i class="material-icons">shopping_cart</i>Placed Orders</a>
-        </li>
-        <li>
-          <a href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
-        </li>
+       <li>
+            <a href="home.php"><i class="material-icons">restaurant_menu </i>Menu</a>
+          </li>
+          <li><div class="divider"></div></li>
+          <li id="placed">
+            <a   href="cart.php"><i class="material-icons">shopping_cart
+</i>Cart</a>
+          </li>
+          <li id="placed">
+            <a   href="placed.php"><i class="material-icons">shop</i>Placed Orders</a>
+          </li>
+          <li id="completed">
+            <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
+          </li>
 
-        <li>
-          <a href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
-        </li>
+          <li id="edit">
+            <a  href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
+          </li>
 
         <li>
           <a class="red waves-effect white-text" href="logout.php"

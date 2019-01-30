@@ -21,8 +21,8 @@ if (isset($_SESSION['username'])) {
     $id = $row['id'];
     $cat = $row['category'];
     $balance = $row['balance'];
+    echo $id;
     $litres = $row['litres'];
-
 } else {
     header('Location: index.php');
     die();
@@ -112,20 +112,24 @@ if (isset($_SESSION['username'])) {
             ><?php echo "Total Litres : " . $litres . "L" ?></span></a>
           </div>
         </li>
-        <li>
-          <a href="home.php"><i class="material-icons">restaurant_menu </i>Menu</a>
-        </li>
-        <li><div class="divider"></div></li>
-        <li>
-          <a href="placed.php"><i class="material-icons">shopping_cart</i>Placed Orders</a>
-        </li>
-        <li>
-          <a href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
-        </li>
+       <li>
+            <a href="home.php"><i class="material-icons">restaurant_menu </i>Menu</a>
+          </li>
+          <li><div class="divider"></div></li>
+          <li id="placed">
+            <a   href="cart.php"><i class="material-icons">shopping_cart
+</i>Cart</a>
+          </li>
+          <li id="placed">
+            <a   href="placed.php"><i class="material-icons">shop</i>Placed Orders</a>
+          </li>
+          <li id="completed">
+            <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
+          </li>
 
-        <li>
-          <a href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
-        </li>
+          <li id="edit">
+            <a  href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
+          </li>
 
         <li>
           <a class="red waves-effect white-text" href="logout.php"
@@ -135,8 +139,33 @@ if (isset($_SESSION['username'])) {
           >
         </li>
       </ul>
-    </div>
 
+    </div>
+<div class="container">
+<form
+          class="col s12"
+          id="myform4"
+          method="post"
+          action="updateData.php"
+        >
+          <div class="row">
+<input type="hidden" name="ide"   value=<?php echo $id; ?> id="hiddenfield" />
+
+            <div class="input-field col s12">
+             <input required placeholder="Enter Email ID" name="email" type="email"  />
+              <label>Email ID</label>
+            </div>
+          </div>
+          <button
+            type="submit"
+            name="submit"
+            class="waves-effect waves-green green btn btn-success"
+          >
+            Update Email
+          </button>
+
+        </form>
+</div>
     <script>
     $(document).ready(function() {
       $(".modal").modal();
