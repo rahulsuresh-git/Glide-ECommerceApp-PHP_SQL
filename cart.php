@@ -14,7 +14,8 @@ $today = date('l');
 if (isset($_SESSION['username'])) {
     $uid = $_SESSION['username'];
     include 'db.php';
-    $query = "SELECT * FROM users WHERE email = '$uid'";
+    $uid = $_SESSION['username'];
+    $query = "SELECT * FROM users WHERE id = '$uid'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $name = $row['name'];
@@ -22,15 +23,11 @@ if (isset($_SESSION['username'])) {
     $cat = $row['category'];
     $balance = $row['balance'];
     $litres = $row['litres'];
-    $query = "SELECT * FROM auth WHERE email = '$uid'";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($result);
-    $origid = $row['id'];
+
 } else {
     header('Location: index.php');
     die();
 }
-
 ?>
 <!DOCTYPE html>
 <!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
@@ -130,7 +127,7 @@ if (isset($_SESSION['username'])) {
             <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
           </li>
 
-         
+
 
         <li>
           <a class="red waves-effect white-text" href="logout.php"
@@ -154,7 +151,7 @@ if ($row['sumf'] == "") {
 echo '    <h5>Cart Total : ₹' . $row["sumf"] . '</h5>';
 echo '<div class="row" style="margin-bottom:0">
 <form method="post" action="placeOrder.php" id="place">
-<input type="hidden" name="origid"   value=' . $origid . ' id="hiddenfield" />
+<input type="hidden" name="origid"   value=' . $id . ' id="hiddenfield" />
 <button
             type="submit"
             name="submit"

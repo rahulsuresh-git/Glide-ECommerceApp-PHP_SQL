@@ -12,14 +12,16 @@ date_default_timezone_set('Asia/Kolkata');
 $today = date('l');
 include 'db.php';
 $login = 0;
+$cat = 'A';
 if (isset($_SESSION['username'])) {
     $login = 1;
     $uid = $_SESSION['username'];
-    $query = "SELECT * FROM users WHERE email = '$uid'";
+    $query = "SELECT * FROM users WHERE id = '$uid'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $name = $row['name'];
     $id = $row['id'];
+
     $cat = $row['category'];
     $balance = $row['balance'];
     $litres = $row['litres'];
@@ -31,53 +33,41 @@ if (isset($_SESSION['username'])) {
     $co1 = 0;
     $ca05 = 0;
 
-    if ($litres % 26 === 25 && $lit != 0) {
-        $gr5 =
-        $gr1 =
-        $se1 =
-        $se5 =
-        $co05 =
-        $co1 =
-        $ca05 = 15;
+    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Groundnut Oil' and qty=1 ";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $gr1 = $row['price'];
 
-    } else {
+    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Groundnut Oil' and qty=5 ";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $gr5 = $row['price'];
 
-        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Groundnut Oil' and qty=1 ";
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_array($result);
-        $gr1 = $row['price'];
+    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Sesame Oil' and qty=1 ";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $se1 = $row['price'];
 
-        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Groundnut Oil' and qty=5 ";
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_array($result);
-        $gr5 = $row['price'];
+    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Sesame Oil' and qty=5 ";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $se5 = $row['price'];
 
-        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Sesame Oil' and qty=1 ";
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_array($result);
-        $se1 = $row['price'];
+    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Coconut Oil' and qty=0.5 ";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $co05 = $row['price'];
 
-        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Sesame Oil' and qty=5 ";
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_array($result);
-        $se5 = $row['price'];
+    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Coconut Oil' and qty=1 ";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $co1 = $row['price'];
 
-        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Coconut Oil' and qty=0.5 ";
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_array($result);
-        $co05 = $row['price'];
+    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Castor Oil' and qty=0.5";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $ca05 = $row['price'];
 
-        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Coconut Oil' and qty=1 ";
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_array($result);
-        $co1 = $row['price'];
-
-        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Castor Oil' and qty=0.5";
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_array($result);
-        $ca05 = $row['price'];
-
-    }
 } else {
     $gr5 = 0;
     $gr1 = 0;
@@ -227,7 +217,7 @@ if (isset($_SESSION['username'])) {
             <a   href="cart.php"><i class="material-icons">shopping_cart
 </i>Cart</a>
           </li>
-          <li id="placed">
+          <li id="placedOrders">
             <a   href="placed.php"><i class="material-icons">shop</i>Placed Orders</a>
           </li>
           <li id="completed">
@@ -524,8 +514,10 @@ link.innerHTML="Login/Register";
 var link = document.getElementById("logLink");
 link.setAttribute('href', "index.php");
 document.getElementById("placed").style.display = 'none';
+document.getElementById("placedOrders").style.display = 'none';
+
 document.getElementById("completed").style.display = 'none';
-document.getElementById("edit").style.display = 'none';
+// document.getElementById("edit").style.display = 'none';
 
     }
     // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
