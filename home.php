@@ -188,6 +188,8 @@ if (isset($_SESSION['username'])) {
   </head>
   <body>
     <div class="row">
+    <div class="navbar-fixed">
+
       <nav>
         <div class="blue nav-wrapper">
           <a href="#" data-target="slide-out" class="sidenav-trigger"
@@ -197,6 +199,7 @@ if (isset($_SESSION['username'])) {
           <a class="brand-logo center" style="font-size:20px">FitLite Menu</a>
         </div>
       </nav>
+      </div>
       <ul id="slide-out" class="sidenav">
         <li>
           <div class="user-view">
@@ -491,30 +494,22 @@ if (isset($_SESSION['username'])) {
       </div>
     </div>
   </div>
-  <div id="modal4" class="modal">
+
+  <div data-keyboard="false" data-backdrop="static" id="modal4" class="modal">
     <div class="modal-content">
-      <h5>Castor Oil</h5>
+      <h5>Sesame Oil (5 Litre)</h5>
       <div class="row">
         <form
           class="col s12"
-          id="myform4"
+          id="myform22"
           method="post"
           action="calculateOrder.php"
         >
           <div class="row">
             <div class="input-field col s12">
-              <p>Quantity :</p>
-              <p>
-                <label>
-                  <input required name="group1" value="0.5" type="radio" />
-                  <span>500g at ₹<?php echo $ca05 ?></span>
-                </label>
-              </p>
-            </div>
-            <div class="input-field col s12">
-             <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input type="hidden"  name="group1" value="5">
 
-              <label>Quantity</label>
             </div>
           </div>
           <button
@@ -531,6 +526,101 @@ if (isset($_SESSION['username'])) {
       </div>
     </div>
   </div>
+  <div data-keyboard="false" data-backdrop="static" id="modal5" class="modal">
+    <div class="modal-content">
+      <h5>Coconut Oil (1 Litre)</h5>
+      <div class="row">
+        <form
+          class="col s12"
+          id="myform31"
+          method="post"
+          action="calculateOrder.php"
+        >
+          <div class="row">
+            <div class="input-field col s12">
+            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input type="hidden"  name="group1" value="1">
+
+            </div>
+          </div>
+          <button
+            type="submit"
+            name="submit"
+            class="waves-effect waves-green green btn btn-success"
+          >
+            Add to Cart
+          </button>
+          <a class="modal-close waves-effect waves-green red btn btn-danger"
+            >Cancel</a
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+  <div data-keyboard="false" data-backdrop="static" id="modal6" class="modal">
+    <div class="modal-content">
+      <h5>Coconut Oil (5 Litre)</h5>
+      <div class="row">
+        <form
+          class="col s12"
+          id="myform32"
+          method="post"
+          action="calculateOrder.php"
+        >
+          <div class="row">
+            <div class="input-field col s12">
+            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input type="hidden"  name="group1" value="5">
+
+            </div>
+          </div>
+          <button
+            type="submit"
+            name="submit"
+            class="waves-effect waves-green green btn btn-success"
+          >
+            Add to Cart
+          </button>
+          <a class="modal-close waves-effect waves-green red btn btn-danger"
+            >Cancel</a
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div data-keyboard="false" data-backdrop="static" id="modal7" class="modal">
+    <div class="modal-content">
+      <h5>Castor Oil (0.5 Litres)</h5>
+      <div class="row">
+        <form
+          class="col s12"
+          id="myform4"
+          method="post"
+          action="calculateOrder.php"
+        >
+          <div class="row">
+            <div class="input-field col s12">
+            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input type="hidden"  name="group1" value="0.5">
+
+            </div>
+          </div>
+          <button
+            type="submit"
+            name="submit"
+            class="waves-effect waves-green green btn btn-success"
+          >
+            Add to Cart
+          </button>
+          <a class="modal-close waves-effect waves-green red btn btn-danger"
+            >Cancel</a
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script>
     $(document).ready(function() {
       $(".modal").modal();
@@ -696,7 +786,7 @@ document.getElementById("edit").style.display = 'none';
       });
     });
 
-    $("#myform3").submit(function(e) {
+    $("#myform31").submit(function(e) {
       e.preventDefault(); $(this).find(':input[type=submit]').prop('disabled', true);
 
       var form = $(this);
@@ -714,7 +804,7 @@ console.log(lit);
         success: function(data) {
           if(data.includes("done"))
          { M.toast({html: 'Added to Cart!',classes:'green'});
-         $('#modal3').modal('close');
+         $('#modal5').modal('close');
         }else if(data.includes("guest")){
           M.toast({html: 'You are not logged in!',classes:'red'});
       }
@@ -726,6 +816,38 @@ console.log(lit);
         }
       });
     });
+    $("#myform32").submit(function(e) {
+      e.preventDefault(); $(this).find(':input[type=submit]').prop('disabled', true);
+
+      var form = $(this);
+      var uid = "<?php echo $id; ?>";
+      var cat = "<?php echo $cat; ?>";
+      var lit = "<?php echo $litres; ?>";
+console.log(lit);
+      var url = form.attr("action");
+      var type = "Coconut Oil";
+      $.ajax({
+        type: "POST",
+        url: url,
+        data:
+          form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+ "&lit="+lit, // serializes the form's elements.
+        success: function(data) {
+          if(data.includes("done"))
+         { M.toast({html: 'Added to Cart!',classes:'green'});
+         $('#modal6').modal('close');
+        }else if(data.includes("guest")){
+          M.toast({html: 'You are not logged in!',classes:'red'});
+      }
+        else
+        {
+            M.toast({html: 'Some error occurred!',classes:'red'});
+        }        setTimeout(" $(':input[type=submit]').removeAttr('disabled')", 3000);
+
+        }
+      });
+    });
+
+
     $("#myform4").submit(function(e) {
       e.preventDefault();  $(this).find(':input[type=submit]').prop('disabled', true);
       var form = $(this);
@@ -743,7 +865,7 @@ console.log(lit);
         success: function(data) {
           if(data.includes("done"))
          { M.toast({html: 'Added to Cart!',classes:'green'});
-         $('#modal4').modal('close');
+         $('#modal7').modal('close');
         }else if(data.includes("guest")){
           M.toast({html: 'You are not logged in!',classes:'red'});
       }
