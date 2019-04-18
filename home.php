@@ -179,7 +179,7 @@ if (isset($_SESSION['username'])) {
         margin: 10px;
       }
       .card-content {
-        height: 150px;
+        height: 100px;
       }
       span {
         color: #000;
@@ -251,16 +251,17 @@ if (isset($_SESSION['username'])) {
     </div>
 
     <div class="row">
-      <div class="col s6 m6">
+
+    <div class="col s6 m6">
         <div class="card">
           <div class="card-image">
-            <img style="" src="images/groundnut.jpeg" />
+            <img style="" src="images/2.jpg" />
             <span class="card-title"></span>
           </div>
           <div class="card-content">
-            <p style="font-weight:bold">Groundnut Oil</p>
-            <p>Cost (1 Litre)- ₹<?php echo $gr1 ?></p>
-            <p>Cost (5 Litre)- ₹<?php echo $gr5 ?></p>
+            <p style="font-weight:bold">Groundnut Oil (1 Litre)</p>
+            <p>Cost - ₹<?php echo $gr1 ?></p>
+
           </div>
           <div class="card-action">
             <a
@@ -272,16 +273,16 @@ if (isset($_SESSION['username'])) {
           </div>
         </div>
       </div>
+
       <div class="col s6 m6">
         <div class="card">
           <div class="card-image">
-            <img style="" src="images/sesame.jpeg" />
+            <img style="" src="images/6.jpg" />
             <span class="card-title"></span>
           </div>
           <div class="card-content">
-            <p style="font-weight:bold">Sesame Oil</p>
-            <p>Cost (1 Litre)- ₹<?php echo $se1 ?></p>
-            <p>Cost (5 Litre)- ₹<?php echo $se5 ?></p>
+            <p style="font-weight:bold">Groundnut Oil (5 Litres)</p>
+            <p>Cost - ₹<?php echo $gr5 ?></p>
           </div>
           <div class="card-action">
             <a
@@ -293,22 +294,83 @@ if (isset($_SESSION['username'])) {
           </div>
         </div>
       </div>
+
+
       <div class="col s6 m6">
         <div class="card">
           <div class="card-image">
-            <img style="" src="images/coconut.jpeg" />
+            <img style="" src="images/1.jpg" />
             <span class="card-title"></span>
           </div>
           <div class="card-content">
-            <p style="font-weight:bold">Coconut Oil</p>
-            <p>Cost (500grams)- ₹<?php echo $co05 ?></p>
-            <p>Cost (1 Litre)- ₹<?php echo $co1 ?></p>
+            <p style="font-weight:bold">Sesame Oil (1 Litre)</p>
+            <p>Cost - ₹<?php echo $gr1 ?></p>
           </div>
           <div class="card-action">
             <a
               style="font-weight:bold"
               class="waves-effect waves-light red btn modal-trigger"
               href="#modal3"
+              >Buy</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col s6 m6">
+        <div class="card">
+          <div class="card-image">
+            <img style="" src="images/5.jpg" />
+            <span class="card-title"></span>
+          </div>
+          <div class="card-content">
+            <p style="font-weight:bold">Sesame Oil (5 Litres)</p>
+            <p>Cost - ₹<?php echo $se5 ?></p>
+          </div>
+          <div class="card-action">
+            <a
+              style="font-weight:bold"
+              class="waves-effect waves-light red btn modal-trigger"
+              href="#modal4"
+              >Buy</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col s6 m6">
+        <div class="card">
+          <div class="card-image">
+            <img style="" src="images/4.jpg" />
+            <span class="card-title"></span>
+          </div>
+          <div class="card-content">
+            <p style="font-weight:bold">Coconut Oil (0.5 Litres)</p>
+            <p>Cost - ₹<?php echo $co05 ?></p>
+          </div>
+          <div class="card-action">
+            <a
+              style="font-weight:bold"
+              class="waves-effect waves-light red btn modal-trigger"
+              href="#modal5"
+              >Buy</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col s6 m6">
+        <div class="card">
+          <div class="card-image">
+            <img style="" src="images/3.jpg" />
+            <span class="card-title"></span>
+          </div>
+          <div class="card-content">
+            <p style="font-weight:bold">Coconut Oil (1 Litre)</p>
+            <p>Cost - ₹<?php echo $co1 ?></p>
+          </div>
+          <div class="card-action">
+            <a
+              style="font-weight:bold"
+              class="waves-effect waves-light red btn modal-trigger"
+              href="#modal6"
               >Buy</a
             >
           </div>
@@ -328,7 +390,7 @@ if (isset($_SESSION['username'])) {
             <a
               style="font-weight:bold"
               class="waves-effect waves-light red btn modal-trigger"
-              href="#modal4"
+              href="#modal7"
               >Buy</a
             >
           </div>
@@ -338,34 +400,19 @@ if (isset($_SESSION['username'])) {
   </body>
   <div data-keyboard="false" data-backdrop="static" id="modal1" class="modal">
     <div class="modal-content">
-      <h5>Groundnut Oil</h5>
+      <h5>Groundnut Oil (1 Litre)</h5>
       <div class="row">
         <form
           class="col s12"
-          id="myform1"
+          id="myform11"
           method="post"
           action="calculateOrder.php"
         >
           <div class="row">
             <div class="input-field col s12">
-              <p>Quantity :</p>
-              <p>
-                <label>
-                  <input required name="group1" value="1" type="radio" />
-                  <span>1 Litre at ₹<?php echo $gr1 ?></span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input required name="group1" value="5" type="radio" />
-                  <span>5 Litre at ₹<?php echo $gr5 ?></span>
-                </label>
-              </p>
-            </div>
-            <div class="input-field col s12">
             <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input type="hidden"  name="group1" value="1">
 
-              <label>Quantity</label>
             </div>
           </div>
           <button
@@ -382,36 +429,21 @@ if (isset($_SESSION['username'])) {
       </div>
     </div>
   </div>
-  <div id="modal2" class="modal">
+  <div data-keyboard="false" data-backdrop="static" id="modal2" class="modal">
     <div class="modal-content">
-      <h5>Sesame Oil</h5>
+      <h5>Groundnut Oil (5 Litre)</h5>
       <div class="row">
         <form
           class="col s12"
-          id="myform2"
+          id="myform12"
           method="post"
           action="calculateOrder.php"
         >
           <div class="row">
             <div class="input-field col s12">
-              <p>Quantity :</p>
-              <p>
-                <label>
-                  <input required name="group1" value="1" type="radio" />
-                  <span>1 Litre at ₹<?php echo $se1 ?></span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input required name="group1" value="5" type="radio" />
-                  <span>5 Litre at ₹<?php echo $se5 ?></span>
-                </label>
-              </p>
-            </div>
-            <div class="input-field col s12">
             <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input type="hidden"  name="group1" value="5">
 
-              <label>Quantity</label>
             </div>
           </div>
           <button
@@ -428,36 +460,21 @@ if (isset($_SESSION['username'])) {
       </div>
     </div>
   </div>
-  <div id="modal3" class="modal">
+  <div data-keyboard="false" data-backdrop="static" id="modal3" class="modal">
     <div class="modal-content">
-      <h5>Coconut Oil</h5>
+      <h5>Sesame Oil (1 Litre)</h5>
       <div class="row">
         <form
           class="col s12"
-          id="myform3"
+          id="myform21"
           method="post"
           action="calculateOrder.php"
         >
           <div class="row">
             <div class="input-field col s12">
-              <p>Quantity :</p>
-              <p>
-                <label>
-                  <input required name="group1" value="1" type="radio" />
-                  <span>1 Litre at ₹<?php echo $co1 ?></span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input required name="group1" value="0.5" type="radio" />
-                  <span>500g at ₹<?php echo $co05 ?></span>
-                </label>
-              </p>
-            </div>
-            <div class="input-field col s12">
             <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input type="hidden"  name="group1" value="1">
 
-              <label>Quantity</label>
             </div>
           </div>
           <button
@@ -545,7 +562,7 @@ document.getElementById("edit").style.display = 'none';
       $("select").formSelect();
     });
 
-    $("#myform1").submit(function(e) {
+    $("#myform11").submit(function(e) {
       e.preventDefault();
       $(this).find(':input[type=submit]').prop('disabled', true);
 
@@ -581,7 +598,44 @@ document.getElementById("edit").style.display = 'none';
         }
       });
     });
-    $("#myform2").submit(function(e) {
+    $("#myform12").submit(function(e) {
+      e.preventDefault();
+      $(this).find(':input[type=submit]').prop('disabled', true);
+
+      var form = $(this);
+      var uid = "<?php echo $id; ?>";
+      var cat = "<?php echo $cat; ?>";
+
+      var url = form.attr("action");
+      var lit = "<?php echo $litres; ?>";
+
+      var type = "Groundnut Oil";
+      $.ajax({
+        type: "POST",
+        url: url,
+        data:
+        form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+ "&lit="+lit, // serializes the form's elements.
+        success: function(data) {
+
+          if(data.includes("done"))
+         { M.toast({html: 'Added to Cart!',classes:'green'});
+         $('#modal2').modal('close');
+        } else if(data.includes("guest")){
+          M.toast({html: 'You are not logged in!',classes:'red'});
+      }
+
+        else
+        {
+            M.toast({html: 'Some error occurred!',classes:'red'});
+        }
+        setTimeout(" $(':input[type=submit]').removeAttr('disabled')", 3000);
+
+
+        }
+      });
+    });
+
+    $("#myform21").submit(function(e) {
       e.preventDefault();      $(this).find(':input[type=submit]').prop('disabled', true);
 
       var form = $(this);
@@ -599,7 +653,7 @@ document.getElementById("edit").style.display = 'none';
         success: function(data) {
           if(data.includes("done"))
          { M.toast({html: 'Added to Cart!',classes:'green'});
-         $('#modal2').modal('close');
+         $('#modal3').modal('close');
         }else if(data.includes("guest")){
           M.toast({html: 'You are not logged in!',classes:'red'});
       }
@@ -611,6 +665,37 @@ document.getElementById("edit").style.display = 'none';
     }
       });
     });
+    $("#myform22").submit(function(e) {
+      e.preventDefault();      $(this).find(':input[type=submit]').prop('disabled', true);
+
+      var form = $(this);
+      var uid = "<?php echo $id; ?>";
+      var cat = "<?php echo $cat; ?>";
+      var lit = "<?php echo $litres; ?>";
+
+      var url = form.attr("action");
+      var type = "Sesame Oil";
+      $.ajax({
+        type: "POST",
+        url: url,
+        data:
+        form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+ "&lit="+lit, // serializes the form's elements.
+        success: function(data) {
+          if(data.includes("done"))
+         { M.toast({html: 'Added to Cart!',classes:'green'});
+         $('#modal4').modal('close');
+        }else if(data.includes("guest")){
+          M.toast({html: 'You are not logged in!',classes:'red'});
+      }
+        else
+        {
+            M.toast({html: 'Some error occurred!',classes:'red'});
+        }                   setTimeout(" $(':input[type=submit]').removeAttr('disabled')", 3000);
+
+    }
+      });
+    });
+
     $("#myform3").submit(function(e) {
       e.preventDefault(); $(this).find(':input[type=submit]').prop('disabled', true);
 
