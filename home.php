@@ -342,12 +342,12 @@ if (isset($_SESSION['username'])) {
       <div class="col s6 m6">
         <div class="card">
           <div class="card-image">
-            <img style="" src="images/4.jpg" />
+            <img style="" src="images/3.jpg" />
             <span class="card-title"></span>
           </div>
           <div class="card-content">
-            <p style="font-weight:bold">Coconut Oil (0.5 Litres)</p>
-            <p>Cost - ₹<?php echo $co05 ?></p>
+            <p style="font-weight:bold">Coconut Oil (1 Litres)</p>
+            <p>Cost - ₹<?php echo $co1 ?></p>
           </div>
           <div class="card-action">
             <a
@@ -362,12 +362,12 @@ if (isset($_SESSION['username'])) {
       <div class="col s6 m6">
         <div class="card">
           <div class="card-image">
-            <img style="" src="images/3.jpg" />
+            <img style="" src="images/4.jpg" />
             <span class="card-title"></span>
           </div>
           <div class="card-content">
-            <p style="font-weight:bold">Coconut Oil (1 Litre)</p>
-            <p>Cost - ₹<?php echo $co1 ?></p>
+            <p style="font-weight:bold">Coconut Oil (0.5 Litre)</p>
+            <p>Cost - ₹<?php echo $co05 ?></p>
           </div>
           <div class="card-action">
             <a
@@ -387,7 +387,7 @@ if (isset($_SESSION['username'])) {
           </div>
           <div class="card-content">
             <p style="font-weight:bold">Castor Oil</p>
-            <p>Cost (500grams)- ₹<?php echo $ca05 ?></p>
+            <p>Cost - ₹<?php echo $ca05 ?></p>
           </div>
           <div class="card-action">
             <a
@@ -559,7 +559,7 @@ if (isset($_SESSION['username'])) {
   </div>
   <div data-keyboard="false" data-backdrop="static" id="modal6" class="modal">
     <div class="modal-content">
-      <h5>Coconut Oil (5 Litre)</h5>
+      <h5>Coconut Oil (0.5 Litre)</h5>
       <div class="row">
         <form
           class="col s12"
@@ -570,7 +570,7 @@ if (isset($_SESSION['username'])) {
           <div class="row">
             <div class="input-field col s12">
             <input required placeholder="Enter Quantity" name="qty" type="number"  />
-            <input type="hidden"  name="group1" value="5">
+            <input type="hidden"  name="group1" value="0.5">
 
             </div>
           </div>
