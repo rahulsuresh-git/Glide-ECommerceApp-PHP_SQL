@@ -14,8 +14,7 @@ $today = date('l');
 if (isset($_SESSION['username'])) {
     $uid = $_SESSION['username'];
     include 'db.php';
-    $uid = $_SESSION['username'];
-    $query = "SELECT * FROM users WHERE id = '$uid'";
+    $query = "SELECT * FROM users WHERE email = '$uid'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $name = $row['name'];
@@ -128,7 +127,12 @@ if (isset($_SESSION['username'])) {
           <li id="completed">
             <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
           </li>
-
+ <li id="edit">
+            <a  href="ref.php"><i class="material-icons">card_giftcard</i>Referral Code</a>
+          </li>
+          <li id="edit">
+            <a  href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
+          </li>
 
         <li>
           <a class="red waves-effect white-text" href="logout.php"
@@ -142,8 +146,8 @@ if (isset($_SESSION['username'])) {
     <div class="container">
 <?php
 $query1 = "select *
-from orders where status='placed'
-group by oid order by timesp desc";
+from orders where status='placed' and uid='$id'
+group by oid order by timesp desc ";
 $result = mysqli_query($conn, $query1);
 while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="row" style="margin-bottom:0">

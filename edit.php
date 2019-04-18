@@ -21,7 +21,6 @@ if (isset($_SESSION['username'])) {
     $id = $row['id'];
     $cat = $row['category'];
     $balance = $row['balance'];
-    echo $id;
     $litres = $row['litres'];
 } else {
     header('Location: index.php');
@@ -126,8 +125,12 @@ if (isset($_SESSION['username'])) {
           <li id="completed">
             <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
           </li>
-
-         
+ <li id="edit">
+            <a  href="ref.php"><i class="material-icons">card_giftcard</i>Referral Code</a>
+          </li>
+          <li id="edit">
+            <a  href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
+          </li>
 
         <li>
           <a class="red waves-effect white-text" href="logout.php"
@@ -139,8 +142,8 @@ if (isset($_SESSION['username'])) {
       </ul>
 
     </div>
-<div class="container">
-<form
+<div class="container"><p style="text-align:center">Feature work in progress</p>
+<!-- <form
           class="col s12"
           id="myform4"
           method="post"
@@ -162,7 +165,7 @@ if (isset($_SESSION['username'])) {
             Update Email
           </button>
 
-        </form>
+        </form> -->
 </div>
     <script>
     $(document).ready(function() {

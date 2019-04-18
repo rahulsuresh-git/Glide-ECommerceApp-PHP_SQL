@@ -14,13 +14,11 @@ $today = date('l');
 if (isset($_SESSION['username'])) {
     $uid = $_SESSION['username'];
     include 'db.php';
-    $uid = $_SESSION['username'];
-    $query = "SELECT * FROM users WHERE id = '$uid'";
+    $query = "SELECT * FROM users WHERE email = '$uid'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $name = $row['name'];
     $id = $row['id'];
-
     $cat = $row['category'];
     $balance = $row['balance'];
     $litres = $row['litres'];
@@ -128,8 +126,12 @@ if (isset($_SESSION['username'])) {
           <li id="completed">
             <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
           </li>
-
-
+ <li id="edit">
+            <a  href="ref.php"><i class="material-icons">card_giftcard</i>Referral Code</a>
+          </li>
+          <li id="edit">
+            <a  href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
+          </li>
 
         <li>
           <a class="red waves-effect white-text" href="logout.php"

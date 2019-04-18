@@ -53,9 +53,9 @@ margin:5px;
         <div class="col s12">
         <img src="images/logo.png"  style="width:300px" alt="">
 </div>
-     <div class="col s12">
-            <a class="red waves-effect waves-light btn-large" href="home.php">Guest</a>
-    </div>
+    <!-- <div class="col s12">-->
+    <!--        <a class="red waves-effect waves-light btn-large" href="home.php">Guest</a>-->
+    <!--</div>-->
     <div class="col s12">
         <a class="indigo waves-effect waves-light btn-large" href="login.php">Login</a>
     </div>

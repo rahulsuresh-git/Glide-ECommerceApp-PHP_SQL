@@ -19,13 +19,11 @@ if (isset($_SESSION['username'])) {
     $row = mysqli_fetch_array($result);
     $name = $row['name'];
     $id = $row['id'];
+
     $cat = $row['category'];
     $balance = $row['balance'];
     $litres = $row['litres'];
-    $query = "SELECT * FROM auth WHERE email = '$uid'";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($result);
-    $origid = $row['id'];
+
 } else {
     header('Location: index.php');
     die();
@@ -90,7 +88,7 @@ if (isset($_SESSION['username'])) {
             ><i class="material-icons">menu</i></a
           >
 
-          <a class="brand-logo center" style="font-size:20px">My Cart</a>
+          <a class="brand-logo center" style="font-size:20px">Placed Orders</a>
         </div>
       </nav>
       <ul id="slide-out" class="sidenav">
@@ -145,56 +143,14 @@ if (isset($_SESSION['username'])) {
         </li>
       </ul>
     </div>
-    <div class="container">
+    <div class="container" >
 <?php
-
-$query = "SELECT sum(total) as sumf FROM cart WHERE uid = '$id'";
-$result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
-if ($row['sumf'] == "") {
-    $row['sumf'] = 0;
-}
-
-echo '    <h5>Cart Total : ₹' . $row["sumf"] . '</h5>';
-echo '<div class="row" style="margin-bottom:0">
-<form method="post" action="placeOrder.php" id="place">
-<input type="hidden" name="origid"   value=' . $origid . ' id="hiddenfield" />
-<button
-            type="submit"
-            name="submit"
-            class="waves-effect waves-green indigo btn btn-success" >
-            Place Order
-          </button>
-          </form>
-';
-
-$query = "SELECT * FROM cart WHERE uid = '$id'";
-$result = mysqli_query($conn, $query);
+$query1 = "select *
+from users where id='$id'";
+$result = mysqli_query($conn, $query1);
 while ($row = mysqli_fetch_assoc($result)) {
-    echo '<div class="row" style="margin-bottom:0">
-    <form method="post" action="deleteOrder.php" id="orderForm">
-    <input type="hidden" name="cancel"   value=' . $row["cid"] . ' id="hiddenfield" />
-
-    <div class="col s12 m5">
-      <div class="card-panel green" >
-
-        <span class="white-text"> CONTENT : ' . $row["type"] . '
-        </span> <br>
-        <span class="white-text"> QTY : ' . $row["qty"] . '
-        </span> <br>
-        <span class="white-text"> TOTAL : ₹' . $row["total"] . '
-        </span> <br>
-
-
-        <button
-            type="submit"
-            name="submit"
-            class="waves-effect waves-green red btn btn-success" >
-            Remove Item
-          </button>
-      </div>
-
-  </form>
+    echo '<div class="row" style="text-align:center;margin-top:25vh;font-size:30px;font-weight:bold; ">
+    <p>UNIQUE REFERRAL CODE</p><p style="color:red"> ' . $row["ref"] . '</p></div><diV><p style="text-align:center">Share this referral code with your friends and ask them to apply it while registering to avail exclusive discounts!</p>
     </div>
   </div>
   ';

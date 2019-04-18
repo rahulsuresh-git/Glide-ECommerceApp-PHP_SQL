@@ -12,16 +12,14 @@ date_default_timezone_set('Asia/Kolkata');
 $today = date('l');
 include 'db.php';
 $login = 0;
-$cat = 'A';
 if (isset($_SESSION['username'])) {
     $login = 1;
     $uid = $_SESSION['username'];
-    $query = "SELECT * FROM users WHERE id = '$uid'";
+    $query = "SELECT * FROM users WHERE email = '$uid'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $name = $row['name'];
     $id = $row['id'];
-
     $cat = $row['category'];
     $balance = $row['balance'];
     $litres = $row['litres'];
@@ -33,41 +31,53 @@ if (isset($_SESSION['username'])) {
     $co1 = 0;
     $ca05 = 0;
 
-    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Groundnut Oil' and qty=1 ";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($result);
-    $gr1 = $row['price'];
+    if ($litres % 26 === 25 && $lit != 0) {
+        $gr5 =
+        $gr1 =
+        $se1 =
+        $se5 =
+        $co05 =
+        $co1 =
+        $ca05 = 15;
 
-    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Groundnut Oil' and qty=5 ";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($result);
-    $gr5 = $row['price'];
+    } else {
 
-    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Sesame Oil' and qty=1 ";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($result);
-    $se1 = $row['price'];
+        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Groundnut Oil' and qty=1 ";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $gr1 = $row['price'];
 
-    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Sesame Oil' and qty=5 ";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($result);
-    $se5 = $row['price'];
+        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Groundnut Oil' and qty=5 ";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $gr5 = $row['price'];
 
-    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Coconut Oil' and qty=0.5 ";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($result);
-    $co05 = $row['price'];
+        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Sesame Oil' and qty=1 ";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $se1 = $row['price'];
 
-    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Coconut Oil' and qty=1 ";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($result);
-    $co1 = $row['price'];
+        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Sesame Oil' and qty=5 ";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $se5 = $row['price'];
 
-    $query = "SELECT price FROM oils WHERE category = '$cat' and name='Castor Oil' and qty=0.5";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_array($result);
-    $ca05 = $row['price'];
+        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Coconut Oil' and qty=0.5 ";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $co05 = $row['price'];
 
+        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Coconut Oil' and qty=1 ";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $co1 = $row['price'];
+
+        $query = "SELECT price FROM oils WHERE category = '$cat' and name='Castor Oil' and qty=0.5";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_array($result);
+        $ca05 = $row['price'];
+
+    }
 } else {
     $gr5 = 0;
     $gr1 = 0;
@@ -192,7 +202,7 @@ if (isset($_SESSION['username'])) {
           <div class="user-view">
             <div class="background">
               <img
-                src="https://images.unsplash.com/photo-1545411708-dc09bab4b4c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1112&q=80"
+                src="images/bg.jpg"
               />
             </div>
             <a href="#user"
@@ -217,17 +227,18 @@ if (isset($_SESSION['username'])) {
             <a   href="cart.php"><i class="material-icons">shopping_cart
 </i>Cart</a>
           </li>
-          <li id="placedOrders">
+          <li id="placed">
             <a   href="placed.php"><i class="material-icons">shop</i>Placed Orders</a>
           </li>
           <li id="completed">
             <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
           </li>
-          <!-- <li id="edit">
+ <li id="edit">
+            <a  href="ref.php"><i class="material-icons">card_giftcard</i>Referral Code</a>
+          </li>
+          <li id="edit">
             <a  href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
-          </li> -->
-
-
+          </li>
 
         <li>
           <a class="red waves-effect white-text" id="logLink" href="logout.php"
@@ -243,7 +254,7 @@ if (isset($_SESSION['username'])) {
       <div class="col s6 m6">
         <div class="card">
           <div class="card-image">
-            <img style="" src="https://i.postimg.cc/13DSWyKS/groundnut.jpg" />
+            <img style="" src="images/groundnut.jpeg" />
             <span class="card-title"></span>
           </div>
           <div class="card-content">
@@ -264,7 +275,7 @@ if (isset($_SESSION['username'])) {
       <div class="col s6 m6">
         <div class="card">
           <div class="card-image">
-            <img style="" src="https://i.postimg.cc/63dqvFH6/sesame.jpg" />
+            <img style="" src="images/sesame.jpeg" />
             <span class="card-title"></span>
           </div>
           <div class="card-content">
@@ -285,7 +296,7 @@ if (isset($_SESSION['username'])) {
       <div class="col s6 m6">
         <div class="card">
           <div class="card-image">
-            <img style="" src="https://i.postimg.cc/vZ9JbMDm/coconut.jpg" />
+            <img style="" src="images/coconut.jpeg" />
             <span class="card-title"></span>
           </div>
           <div class="card-content">
@@ -362,7 +373,7 @@ if (isset($_SESSION['username'])) {
             name="submit"
             class="waves-effect waves-green green btn btn-success"
           >
-            Place Order
+            Add to Cart
           </button>
           <a class="modal-close waves-effect waves-green red btn btn-danger"
             >Cancel</a
@@ -408,7 +419,7 @@ if (isset($_SESSION['username'])) {
             name="submit"
             class="waves-effect waves-green green btn btn-success"
           >
-            Place Order
+            Add to Cart
           </button>
           <a class="modal-close waves-effect waves-green red btn btn-danger"
             >Cancel</a
@@ -454,7 +465,7 @@ if (isset($_SESSION['username'])) {
             name="submit"
             class="waves-effect waves-green green btn btn-success"
           >
-            Place Order
+            Add to Cart
           </button>
           <a class="modal-close waves-effect waves-green red btn btn-danger"
             >Cancel</a
@@ -494,7 +505,7 @@ if (isset($_SESSION['username'])) {
             name="submit"
             class="waves-effect waves-green green btn btn-success"
           >
-            Place Order
+            Add to Cart
           </button>
           <a class="modal-close waves-effect waves-green red btn btn-danger"
             >Cancel</a
@@ -514,10 +525,8 @@ link.innerHTML="Login/Register";
 var link = document.getElementById("logLink");
 link.setAttribute('href', "index.php");
 document.getElementById("placed").style.display = 'none';
-document.getElementById("placedOrders").style.display = 'none';
-
 document.getElementById("completed").style.display = 'none';
-// document.getElementById("edit").style.display = 'none';
+document.getElementById("edit").style.display = 'none';
 
     }
     // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
@@ -556,7 +565,7 @@ document.getElementById("completed").style.display = 'none';
         success: function(data) {
 
           if(data.includes("done"))
-         { M.toast({html: 'Order successfuly placed!',classes:'green'});
+         { M.toast({html: 'Added to Cart!',classes:'green'});
          $('#modal1').modal('close');
         } else if(data.includes("guest")){
           M.toast({html: 'You are not logged in!',classes:'red'});
@@ -589,7 +598,7 @@ document.getElementById("completed").style.display = 'none';
         form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+ "&lit="+lit, // serializes the form's elements.
         success: function(data) {
           if(data.includes("done"))
-         { M.toast({html: 'Order successfuly placed!',classes:'green'});
+         { M.toast({html: 'Added to Cart!',classes:'green'});
          $('#modal2').modal('close');
         }else if(data.includes("guest")){
           M.toast({html: 'You are not logged in!',classes:'red'});
@@ -619,7 +628,7 @@ console.log(lit);
           form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+ "&lit="+lit, // serializes the form's elements.
         success: function(data) {
           if(data.includes("done"))
-         { M.toast({html: 'Order successfuly placed!',classes:'green'});
+         { M.toast({html: 'Added to Cart!',classes:'green'});
          $('#modal3').modal('close');
         }else if(data.includes("guest")){
           M.toast({html: 'You are not logged in!',classes:'red'});
@@ -648,7 +657,7 @@ console.log(lit);
         form.serialize() + "&type=" + type + "&uid=" + uid + "&cat=" + cat+ "&lit="+lit, // serializes the form's elements.
         success: function(data) {
           if(data.includes("done"))
-         { M.toast({html: 'Order successfuly placed!',classes:'green'});
+         { M.toast({html: 'Added to Cart!',classes:'green'});
          $('#modal4').modal('close');
         }else if(data.includes("guest")){
           M.toast({html: 'You are not logged in!',classes:'red'});

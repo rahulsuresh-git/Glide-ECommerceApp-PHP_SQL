@@ -79,7 +79,10 @@ input[type=number]::-webkit-outer-spin-button {
 						<span class="focus-input100" data-placeholder="Contact Number"></span>
 					</div>
 
-
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="text" style="text-align:left;margin:0;padding:0"   name="ref">
+						<span class="focus-input100" data-placeholder="Refferal Code (Optional)"></span>
+					</div>
 					<div class="wrap-input100 validate-input" >
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
