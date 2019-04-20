@@ -20,6 +20,8 @@ if (isset($_SESSION['username'])) {
     $row = mysqli_fetch_array($result);
     $name = $row['name'];
     $id = $row['id'];
+    $rewards = $row['rewards'];
+
     $cat = $row['category'];
     $balance = $row['balance'];
     $litres = $row['litres'];
@@ -217,9 +219,11 @@ if (isset($_SESSION['username'])) {
             <span class="white-text email" style="margin-bottom:20px;padding:0">
               <?php echo "FITL" . $id ?></span></a>
             <span class="white-text name" style="margin:0;padding:0" >
-              <?php echo "Balance : ₹" . $balance ?></span></a>
+              <?php echo "Balance : ₹" . $balance ?></span>
+              <span class="white-text name" style="margin:0;padding:0"
+            ><?php echo "Reward Points : " . $rewards ?></span>
                 <span class="white-text name" style="margin:0;padding:0"
-            ><?php echo "Total Litres : " . $litres . "L" ?></span></a>
+            ><?php echo "Total Litres : " . $litres . "L" ?></span>
           </div>
         </li>
         <li>
