@@ -413,7 +413,7 @@ if (isset($_SESSION['username'])) {
         >
           <div class="row">
             <div class="input-field col s12">
-            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input required placeholder="Enter Quantity" min="1" max="1000" name="qty" type="number"  />
             <input type="hidden"  name="group1" value="1">
 
             </div>
@@ -444,7 +444,7 @@ if (isset($_SESSION['username'])) {
         >
           <div class="row">
             <div class="input-field col s12">
-            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input required placeholder="Enter Quantity" min="1" max="1000" name="qty" type="number"  />
             <input type="hidden"  name="group1" value="5">
 
             </div>
@@ -475,7 +475,7 @@ if (isset($_SESSION['username'])) {
         >
           <div class="row">
             <div class="input-field col s12">
-            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input required placeholder="Enter Quantity" min="1" max="1000" name="qty" type="number"  />
             <input type="hidden"  name="group1" value="1">
 
             </div>
@@ -507,7 +507,7 @@ if (isset($_SESSION['username'])) {
         >
           <div class="row">
             <div class="input-field col s12">
-            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input required placeholder="Enter Quantity" min="1" max="1000" name="qty" type="number"  />
             <input type="hidden"  name="group1" value="5">
 
             </div>
@@ -538,7 +538,7 @@ if (isset($_SESSION['username'])) {
         >
           <div class="row">
             <div class="input-field col s12">
-            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input required placeholder="Enter Quantity" min="1" max="1000" name="qty" type="number"  />
             <input type="hidden"  name="group1" value="1">
 
             </div>
@@ -569,7 +569,7 @@ if (isset($_SESSION['username'])) {
         >
           <div class="row">
             <div class="input-field col s12">
-            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input required placeholder="Enter Quantity" min="1" max="1000" name="qty" type="number"  />
             <input type="hidden"  name="group1" value="0.5">
 
             </div>
@@ -601,7 +601,7 @@ if (isset($_SESSION['username'])) {
         >
           <div class="row">
             <div class="input-field col s12">
-            <input required placeholder="Enter Quantity" name="qty" type="number"  />
+            <input required placeholder="Enter Quantity" min="1" max="1000" name="qty" type="number"  />
             <input type="hidden"  name="group1" value="0.5">
 
             </div>
