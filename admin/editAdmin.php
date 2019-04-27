@@ -1,6 +1,6 @@
 <?php
 include 'db.php';
-
+$uid = $_POST['uid'];
 ?>
 <!DOCTYPE html>
 <!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
@@ -121,14 +121,14 @@ include 'db.php';
 
 <?php
 if (isset($_POST['editName'])) {
-    echo '<form id="myform1" action="editAdmin2.php" method="post">
-    <div class="input-field col s12">
-          <input id="last_name" type="text" name="name" class="validate" required >
-          <label for="last_name" >Enter new Name</label>
+    echo "<form id='myform1' action='editAdmin2.php' method='post'>
+    <div class='input-field col s12'>
+          <input id='last_name' type='text' name='name' class='validate' required >
+          <label for='last_name' >Enter new Name</label>
+          <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+          <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newName'>SUBMIT</button>
 
-          <button type="submit" class="sub waves-effect green btn btn-success" style="" name="newName">SUBMIT</button>
-
-        </div></form>';
+        </div></form>";
 }
 ?>
 
