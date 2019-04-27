@@ -14,7 +14,7 @@ $today = date('l');
 if (isset($_SESSION['username'])) {
     $uid = $_SESSION['username'];
     include 'db.php';
-    $query = "SELECT * FROM users WHERE email = '$uid'";
+    $query = "SELECT * FROM users WHERE id = '$uid'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $name = $row['name'];
@@ -148,8 +148,11 @@ $query1 = "select *
 from orders where status='completed' and uid='$id'
 group by oid order by timesp desc ";
 $result = mysqli_query($conn, $query1);
-while ($row = mysqli_fetch_assoc($result)) {
-    echo '<div class="row" style="margin-bottom:0">
+if (mysqli_num_rows($result) <= 0) {
+    echo "<p style='text-align:center'>Can't see any completed orders? Place an order now or wait for the seller to mark your order as completed. </p>";
+} else {
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<div class="row" style="margin-bottom:0">
     <form method="post" action="deleteOrder2.php" id="orderForm">
     <input type="hidden" name="cancel"   value=' . $row["oid"] . ' id="hiddenfield" />
 
@@ -174,9 +177,9 @@ while ($row = mysqli_fetch_assoc($result)) {
   </div>
   ';
 
-    $row['oid'] . "<br>";
+        $row['oid'] . "<br>";
+    }
 }
-
 ?>
 
 

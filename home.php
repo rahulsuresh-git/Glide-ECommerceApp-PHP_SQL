@@ -15,7 +15,7 @@ $login = 0;
 if (isset($_SESSION['username'])) {
     $login = 1;
     $uid = $_SESSION['username'];
-    $query = "SELECT * FROM users WHERE email = '$uid'";
+    $query = "SELECT * FROM users WHERE id = '$uid'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $name = $row['name'];
