@@ -158,7 +158,7 @@ if (mysqli_num_rows($result) <= 0) {
     <input type="hidden" name="cancel"   value=' . $row["oid"] . ' id="hiddenfield" />
 
     <div class="col s12 m5">
-      <div class="card-panel green" >
+      <div class="card-panel green  z-depth-0" >
         <span class="white-text">ORDER ID : ' . $row["oid"] . '
         </span>
         <br>

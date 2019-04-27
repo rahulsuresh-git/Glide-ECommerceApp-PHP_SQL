@@ -96,12 +96,12 @@ include 'db.php';
           </div>
         </li>
         <li>
-            <a href="viewOrders.php"><i class="material-icons">restaurant_menu </i>View Orders</a>
+            <a href="home.php"><i class="material-icons">restaurant_menu </i>Home</a>
           </li>
           <li><div class="divider"></div></li>
           <li id="placed">
-            <a   href="cart.php"><i class="material-icons">shopping_cart
-</i>Cart</a>
+            <a   href="viewData.php"><i class="material-icons">shopping_cart
+</i>View Customer Data</a>
           </li>
           <li id="placed">
             <a   href="placed.php"><i class="material-icons">shop</i>Placed Orders</a>

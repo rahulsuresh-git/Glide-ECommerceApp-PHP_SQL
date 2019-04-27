@@ -170,7 +170,7 @@ if (!$row['sumf'] == 0) {
 ';
 } else {
 
-    echo "<p style='text-align:center'>Can't see anything here? Go to Menu and add items to cart!</p>";
+    echo "<p style='text-align:center'>Don't see any items here? Go to Menu and add items to cart!</p>";
 }
 $query = "SELECT * FROM cart WHERE uid = '$id'";
 $result = mysqli_query($conn, $query);
@@ -180,7 +180,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <input type="hidden" name="cancel"   value=' . $row["cid"] . ' id="hiddenfield" />
 
     <div class="col s12 m5">
-      <div class="card-panel green" >
+      <div class="card-panel green  z-depth-0" >
 
         <span class="white-text"> CONTENT : ' . $row["type"] . '
         </span> <br>

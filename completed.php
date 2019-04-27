@@ -154,7 +154,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     <input type="hidden" name="cancel"   value=' . $row["oid"] . ' id="hiddenfield" />
 
     <div class="col s12 m5">
-      <div class="card-panel green" >
+      <div class="card-panel green  z-depth-0" >
         <span class="white-text">ORDER ID : ' . $row["oid"] . '
         </span>
         <br>
