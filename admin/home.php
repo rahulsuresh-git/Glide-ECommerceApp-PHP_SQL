@@ -72,7 +72,7 @@ include 'db.php';
             ><i class="material-icons">menu</i></a
           >
 
-          <a class="brand-logo center" style="font-size:20px">Admin</a>
+          <a class="brand-logo center" style="font-size:20px">Admin Panel</a>
         </div>
       </nav>
       </div>
@@ -127,14 +127,18 @@ include 'db.php';
     </div>
 
     <div class="row">
+    <h5 style="text-align:center">Pending Orders</h5>
     <div class="container">
 <?php
 $query1 = "select *
 from orders where status='placed'
 group by oid order by timesp desc";
 $result = mysqli_query($conn, $query1);
-while ($row = mysqli_fetch_assoc($result)) {
-    echo '<div class="row" style="margin-bottom:0">
+if (mysqli_num_rows($result) <= 0) {
+    echo "<p style='text-align:center'>Can't see any orders here? Ask your customers to place an order!</p>";
+} else {
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<div class="row" style="margin-bottom:0">
     <form method="post" action="orderAdmin.php" id="orderForm">
     <input type="hidden" name="orderID"   value=' . $row["oid"] . ' id="hiddenfield" />
 
@@ -161,8 +165,8 @@ while ($row = mysqli_fetch_assoc($result)) {
   </div>
   ';
 
-    $row['oid'] . "<br>";
-}
+        $row['oid'] . "<br>";
+    }}
 
 ?>
 

@@ -155,8 +155,9 @@ if ($row['sumf'] == "") {
     $row['sumf'] = 0;
 }
 
-echo '    <h5>Cart Total : ₹' . $row["sumf"] . '</h5>';
-echo '<div class="row" style="margin-bottom:0">
+if (!$row['sumf'] == 0) {
+    echo '    <h5>Cart Total : ₹' . $row["sumf"] . '</h5>';
+    echo '<div class="row" style="margin-bottom:0">
 <form method="post" action="placeOrder.php" id="place">
 <input type="hidden" name="origid"   value=' . $origid . ' id="hiddenfield" />
 <button
@@ -167,7 +168,10 @@ echo '<div class="row" style="margin-bottom:0">
           </button>
           </form>
 ';
+} else {
 
+    echo "<p style='text-align:center'>Can't see anything here? Go to Menu and add items to cart!</p>";
+}
 $query = "SELECT * FROM cart WHERE uid = '$id'";
 $result = mysqli_query($conn, $query);
 while ($row = mysqli_fetch_assoc($result)) {

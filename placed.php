@@ -150,7 +150,7 @@ from orders where status='placed' and uid='$id'
 group by oid order by timesp desc ";
 $result = mysqli_query($conn, $query1);
 if (mysqli_num_rows($result) <= 0) {
-    echo "<p style='text-align:center'>Can't see any orders here? Check the Completed tab!</p>";
+    echo "<p style='text-align:center'>Can't see any orders here? Vist your cart to place an Order or visit the Completed tab!</p>";
 } else {
     while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="row" style="margin-bottom:0">
