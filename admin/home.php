@@ -101,10 +101,10 @@ include 'db.php';
           <li><div class="divider"></div></li>
           <li id="placed">
             <a   href="viewData.php"><i class="material-icons">shopping_cart
-</i>View Customer Data</a>
+</i>View/Edit Customer Data</a>
           </li>
           <li id="placed">
-            <a   href="placed.php"><i class="material-icons">shop</i>Placed Orders</a>
+            <a   href="viewAll.php"><i class="material-icons">shop</i>View All Orders</a>
           </li>
           <li id="completed">
             <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>

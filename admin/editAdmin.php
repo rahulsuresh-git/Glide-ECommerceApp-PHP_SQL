@@ -138,8 +138,52 @@ if (isset($_POST['editName'])) {
           <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newEmail'>SUBMIT</button>
 
         </div></form>";
-}
+} elseif (isset($_POST['editContact'])) {
+    echo "<form  action='editAdmin2.php' method='post'>
+    <div class='input-field col s12'>
+          <input id='last_name' type='number' name='contact' class='validate' required >
+          <label for='last_name' >Enter new Contact Number</label>
+          <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+          <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newContact'>SUBMIT</button>
 
+        </div></form>";
+} elseif (isset($_POST['editBalance'])) {
+    echo "<form  action='editAdmin2.php' method='post'>
+    <div class='input-field col s12'>
+          <input id='last_name' type='number' name='balance' class='validate' required >
+          <label for='last_name' >Enter new Balance Amount</label>
+          <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+          <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newBalance'>SUBMIT</button>
+
+        </div></form>";
+} elseif (isset($_POST['editRewards'])) {
+    echo "<form  action='editAdmin2.php' method='post'>
+    <div class='input-field col s12'>
+          <input id='last_name' type='number' name='rewards' class='validate' required >
+          <label for='last_name' >Enter new Reward Points</label>
+          <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+          <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newRewards'>SUBMIT</button>
+
+        </div></form>";
+} elseif (isset($_POST['editLitres'])) {
+    echo "<form  action='editAdmin2.php' method='post'>
+    <div class='input-field col s12'>
+          <input id='last_name' type='number' name='litres' class='validate' required >
+          <label for='last_name' >Enter new Total Litres</label>
+          <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+          <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newLitres'>SUBMIT</button>
+
+        </div></form>";
+} elseif (isset($_POST['editCategory'])) {
+    echo "<form  action='editAdmin2.php' method='post'>
+    <div class='input-field col s12'>
+          <input id='last_name' type='text' name='category' class='validate' required >
+          <label for='last_name' >Enter new Category(A/B/C/D)</label>
+          <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+          <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newCategory'>SUBMIT</button>
+
+        </div></form>";
+}
 ?>
 
 </div>
