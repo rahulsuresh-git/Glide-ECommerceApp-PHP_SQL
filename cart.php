@@ -24,7 +24,7 @@ if (isset($_SESSION['username'])) {
 
     $balance = $row['balance'];
     $litres = $row['litres'];
-    $query = "SELECT * FROM auth WHERE email = '$uid'";
+    $query = "SELECT * FROM auth WHERE id = '$uid'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $origid = $row['id'];
