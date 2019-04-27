@@ -184,6 +184,16 @@ if (isset($_POST['editName'])) {
 
         </div></form>";
 }
+elseif (isset($_POST['editAddr'])) {
+    echo "<form  action='editAdmin2.php' method='post'>
+  <div class='input-field col s12'>
+        <input id='last_name' type='text' name='address' class='validate' required >
+        <label for='last_name' >Enter new Address</label>
+        <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+        <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newAddr'>SUBMIT</button>
+
+      </div></form>";
+}
 ?>
 
 </div>

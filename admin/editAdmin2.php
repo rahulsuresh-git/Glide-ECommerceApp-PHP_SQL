@@ -18,7 +18,7 @@ window.location.href='viewData.php';
     $query = "UPDATE auth set email='$email' where id='$uid'";
     $result = mysqli_query($conn, $query);
     echo "<script>
-alert('Customer Email updated successfully! Make sure you use new email while logging in.');
+alert('Customer Email updated successfully!');
 window.location.href='viewData.php';
 </script>";
 
@@ -69,6 +69,16 @@ window.location.href='viewData.php';
     $result = mysqli_query($conn, $query);
     echo "<script>
 alert('Customer category updated successfully!');
+window.location.href='viewData.php';
+</script>";
+
+} elseif (isset($_POST['newAddr'])) {
+    $address = $_POST['address'];
+    $uid = $_POST['uid'];
+    $query = "UPDATE users set addr='$address' where id='$uid'";
+    $result = mysqli_query($conn, $query);
+    echo "<script>
+alert('Address updated successfully!');
 window.location.href='viewData.php';
 </script>";
 
