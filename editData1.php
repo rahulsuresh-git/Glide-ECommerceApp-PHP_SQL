@@ -1,4 +1,5 @@
 <?php
+include 'db.php';
 session_start();
 
 $ip = getenv('HTTP_CLIENT_IP') ?:
@@ -28,7 +29,6 @@ if (isset($_SESSION['username'])) {
     header('Location: index.php');
     die();
 }
-
 ?>
 <!DOCTYPE html>
 <!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
@@ -73,7 +73,7 @@ if (isset($_SESSION['username'])) {
         margin: 10px;
       }
       .card-content {
-        height: 120px;
+        height: 100px;
       }
       span {
         color: #000;
@@ -81,7 +81,7 @@ if (isset($_SESSION['username'])) {
     </style>
   </head>
   <body>
-    <div class="row">
+  <div class="row">
       <nav>
         <div class="blue nav-wrapper">
           <a href="#" data-target="slide-out" class="sidenav-trigger"
@@ -146,36 +146,62 @@ if (isset($_SESSION['username'])) {
       </ul>
 
     </div>
-<div class="container">
-        <div id="myTable">
-        <?php
 
-$query1 = "select *
-from users where id='$uid'";
+    <div class="row">
+    <div class="container">
 
-$result = mysqli_query($conn, $query1);
-while ($row = mysqli_fetch_array($result)) {
-    echo "<form method='post' action='editData1.php' id='myForm2'><input type='hidden' name='uid' value='$uid' id='hiddenfield' /><br>
-    <p>Customer Name: " . $row['name'] . "<button  style='margin:10px;border-radius:30px' type='submit' class='sub waves-effect  red btn btn-success z-depth-0' name='editName'>EDIT</button></p>
-    <p>Email ID: " . $row['email'] . "<button  style='margin:10px;border-radius:30px' type='submit' class='sub waves-effect  red btn btn-success z-depth-0' name='editEmail'>EDIT</button></p>
-    <p>Contact No: " . $row['contact'] . "<button  style='margin:10px;border-radius:30px' type='submit' class='sub waves-effect  red btn btn-success z-depth-0' name='editContact'>EDIT</button></p>
-    <p>Address: " . $row['addr'] . "<button  style='margin:10px;border-radius:30px' type='submit' class='sub waves-effect  red btn btn-success z-depth-0' name='editAddr'>EDIT</button></p>
-    ";
+<?php
+if (isset($_POST['editName'])) {
+    echo "<form  action='editData2.php' method='post'>
+    <div class='input-field col s12'>
+          <input id='last_name' type='text' name='name' class='validate' required >
+          <label for='last_name' >Enter new Name</label>
+          <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+          <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newName'>SUBMIT</button>
 
+        </div></form>";
+} elseif (isset($_POST['editEmail'])) {
+    echo "<form  action='editData2.php' method='post'>
+    <div class='input-field col s12'>
+          <input id='last_name' type='email' name='email' class='validate' required >
+          <label for='last_name' >Enter new Email ID</label>
+          <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+          <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newEmail'>SUBMIT</button>
+
+        </div></form>";
+} elseif (isset($_POST['editContact'])) {
+    echo "<form  action='editData2.php' method='post'>
+    <div class='input-field col s12'>
+          <input id='last_name' type='number' name='contact' class='validate' required >
+          <label for='last_name' >Enter new Contact Number</label>
+          <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+          <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newContact'>SUBMIT</button>
+
+        </div></form>";
+} elseif (isset($_POST['editAddr'])) {
+    echo "<form  action='editData2.php' method='post'>
+  <div class='input-field col s12'>
+        <input id='last_name' type='text' name='address' class='validate' required >
+        <label for='last_name' >Enter new Address</label>
+        <input type='hidden' name='uid' value='$uid' id='hiddenfield' />
+        <button type='submit' class='sub waves-effect green btn btn-success' style='' name='newAddr'>SUBMIT</button>
+
+      </div></form>";
 }
-
 ?>
 
-        </div>
-
 </div>
-
-
    </div>
    </body>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jStorage/0.4.12/jstorage.min.js"></script>
+
 <script>
     $(document).ready(function() {
       $(".sidenav").sidenav();
-    });</script>
+    });
+    var value = $.jStorage.get('fitid');
+    console.log(value);
+
+    </script>
 
 </html>
