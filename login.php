@@ -97,7 +97,7 @@ if (isset($_SESSION["username"])) {
 
 				</form>
 
-				<div class="container-login100-form-btn">
+				<!-- <div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 						<center>	<a href="register.php"><button  id="register" class="login100-form-btn">
@@ -105,7 +105,7 @@ if (isset($_SESSION["username"])) {
 							</button></a></center>
 						</div>
 					</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<div id="dropDownSelect1"></div>

@@ -106,23 +106,7 @@ include 'db.php';
           <li id="placed">
             <a   href="viewAll.php"><i class="material-icons">shop</i>View All Orders</a>
           </li>
-          <li id="completed">
-            <a  href="completed.php"><i class="material-icons">done</i>Completed Orders</a>
-          </li>
- <li id="edit">
-            <a  href="ref.php"><i class="material-icons">card_giftcard</i>Referral Code</a>
-          </li>
-          <li id="edit">
-            <a  href="edit.php"><i class="material-icons">edit</i>Edit Profile</a>
-          </li>
 
-        <li>
-          <a class="red waves-effect white-text" id="logLink" href="logout.php"
-            ><i style="color:white" class="material-icons"
-              >power_settings_new </i
-            ><p style="display:inline" id="logText">Logout</p></a
-          >
-        </li>
       </ul>
     </div>
 
