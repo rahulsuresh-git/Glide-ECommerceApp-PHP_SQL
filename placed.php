@@ -149,8 +149,11 @@ $query1 = "select *
 from orders where status='placed' and uid='$id'
 group by oid order by timesp desc ";
 $result = mysqli_query($conn, $query1);
-while ($row = mysqli_fetch_assoc($result)) {
-    echo '<div class="row" style="margin-bottom:0">
+if (mysqli_num_rows($result) <= 0) {
+    echo "<p style='text-align:center'>Can't see any orders here? Check the Completed tab!</p>";
+} else {
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<div class="row" style="margin-bottom:0">
     <form method="post" action="deleteOrder2.php" id="orderForm">
     <input type="hidden" name="cancel"   value=' . $row["oid"] . ' id="hiddenfield" />
 
@@ -180,9 +183,9 @@ while ($row = mysqli_fetch_assoc($result)) {
   </div>
   ';
 
-    $row['oid'] . "<br>";
+        $row['oid'] . "<br>";
+    }
 }
-
 ?>
 
 
