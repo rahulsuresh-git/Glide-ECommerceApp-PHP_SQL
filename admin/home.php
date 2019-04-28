@@ -155,6 +155,7 @@ if (mysqli_num_rows($result) <= 0) {
 ?>
 
 
+<footer style='text-align:center;color:grey;padding-top:10px'>Swipe down to refresh  <div style=''><i class="material-icons" >autorenew</i></div></footer>
 
 
 </div>

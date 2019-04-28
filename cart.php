@@ -219,7 +219,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 ?>
 
 
-<footer>Swipe down to refresh  <div style=''><i class="material-icons" >autorenew</i></div></footer>
+<footer style='text-align:center;color:grey;padding-top:10px'>Swipe down to refresh  <div style=''><i class="material-icons" >autorenew</i></div></footer>
 
 </div>
     <script>
