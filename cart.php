@@ -67,6 +67,13 @@ if (isset($_SESSION['username'])) {
       body {
         background-color: ghostwhite;
       }
+      html {
+  height: 100%;
+}
+#footer {
+  background-color: #f3e5f5;
+  padding: 20px;
+}
       .card-image {
         height: 150px; /* Your height here */
         overflow: hidden;
@@ -212,7 +219,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 ?>
 
 
-
+<footer>Swipe down to refresh  <div style=''><i class="material-icons" >autorenew</i></div></footer>
 
 </div>
     <script>

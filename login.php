@@ -74,7 +74,7 @@ if (isset($_SESSION["username"])) {
 					</span>
 
 					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="number" style="text-align:left;margin:0;padding:0"  id="uname" required name="username">
+						<input class="input100" min="0" max="1000" type="number" style="text-align:left;margin:0;padding:0"  id="uname" required name="username">
 						<span class="focus-input100" data-placeholder="FITLITE ID(001/002/00X)"></span>
 					</div>
 
